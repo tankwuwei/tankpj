@@ -1,0 +1,118 @@
+2017-09-18 10:18:37  [ main:0 ] - [ DEBUG ]  no sigar-amd64-winnt.dll in java.library.path
+org.hyperic.sigar.SigarException: no sigar-amd64-winnt.dll in java.library.path
+	at org.hyperic.sigar.Sigar.loadLibrary(Sigar.java:172)
+	at org.hyperic.sigar.Sigar.<clinit>(Sigar.java:100)
+	at cxz.jet.MonitorConntor.initSigar(MonitorConntor.java:221)
+	at cxz.jet.MonitorConntor.<clinit>(MonitorConntor.java:43)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:147)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:89)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1098)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1050)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:510)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:772)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:838)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:537)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:139)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:83)
+	at engine.bean.BeanFactory.init(BeanFactory.java:12)
+	at engine.server.ServerBase.InitBean(ServerBase.java:71)
+	at engine.server.ServerBase.InitAll(ServerBase.java:25)
+	at cxz.jet.gmserver.CenterServer.<init>(CenterServer.java:24)
+	at cxz.jet.gmserver.CenterServer.main(CenterServer.java:114)
+2017-09-18 10:18:37  [ main:23 ] - [ DEBUG ]  BeanFactory inited !
+2017-09-18 10:18:39  [ Thread-0:1455 ] - [ INFO ]  can not connect to dbserver 127.0.0.1 9157, waiting....
+2017-09-18 10:18:49  [ main:11593 ] - [ INFO ]  Start listening for client @ 9161
+2017-09-18 10:18:49  [ Thread-4:11606 ] - [ DEBUG ]  tcpserver started at 9161
+2017-09-18 10:18:49  [ Thread-3:11618 ] - [ DEBUG ]  httpserver started at 18080
+2017-09-18 10:18:49  [ nioEventLoopGroup-8-1:12118 ] - [ DEBUG ]  Server connect from 127.0.0.1
+2017-09-18 10:18:54  [ nioEventLoopGroup-8-2:16718 ] - [ DEBUG ]  Server connect from 127.0.0.1
+2017-09-18 10:29:28  [ nioEventLoopGroup-8-1:651087 ] - [ DEBUG ]  Server [127.0.0.1] disconnected
+2017-09-18 10:29:29  [ nioEventLoopGroup-8-2:651455 ] - [ DEBUG ]  Server [127.0.0.1] disconnected
+2017-09-18 10:29:29  [ nioEventLoopGroup-5-1:651747 ] - [ INFO ]  can not connect to dbserver 127.0.0.1 9157, waiting....
+2017-09-18 10:29:29  [ nioEventLoopGroup-6-1:651750 ] - [ INFO ]  can not connect to dbserver 127.0.0.1 9157, waiting....
+2017-09-18 10:29:29  [ nioEventLoopGroup-3-1:651755 ] - [ INFO ]  can not connect to dbserver 127.0.0.1 9157, waiting....
+2017-09-18 10:29:54  [ main:0 ] - [ DEBUG ]  no sigar-amd64-winnt.dll in java.library.path
+org.hyperic.sigar.SigarException: no sigar-amd64-winnt.dll in java.library.path
+	at org.hyperic.sigar.Sigar.loadLibrary(Sigar.java:172)
+	at org.hyperic.sigar.Sigar.<clinit>(Sigar.java:100)
+	at cxz.jet.MonitorConntor.initSigar(MonitorConntor.java:221)
+	at cxz.jet.MonitorConntor.<clinit>(MonitorConntor.java:43)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:147)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:89)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1098)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1050)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:510)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:772)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:838)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:537)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:139)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:83)
+	at engine.bean.BeanFactory.init(BeanFactory.java:12)
+	at engine.server.ServerBase.InitBean(ServerBase.java:71)
+	at engine.server.ServerBase.InitAll(ServerBase.java:25)
+	at cxz.jet.gmserver.CenterServer.<init>(CenterServer.java:24)
+	at cxz.jet.gmserver.CenterServer.main(CenterServer.java:114)
+2017-09-18 10:29:54  [ main:23 ] - [ DEBUG ]  BeanFactory inited !
+2017-09-18 10:29:55  [ main:387 ] - [ INFO ]  Start listening for client @ 9161
+2017-09-18 10:29:55  [ Thread-3:407 ] - [ DEBUG ]  httpserver started at 18080
+2017-09-18 10:29:55  [ Thread-4:407 ] - [ DEBUG ]  tcpserver started at 9161
+2017-09-18 10:30:06  [ nioEventLoopGroup-8-1:12143 ] - [ DEBUG ]  Server connect from 127.0.0.1
+2017-09-18 10:30:13  [ nioEventLoopGroup-8-2:18899 ] - [ DEBUG ]  Server connect from 127.0.0.1
+2017-09-18 10:30:50  [ nioEventLoopGroup-2-1:56001 ] - [ INFO ]  can not connect to dbserver 127.0.0.1 9157, waiting....
+2017-09-18 10:30:50  [ nioEventLoopGroup-5-1:56001 ] - [ INFO ]  can not connect to dbserver 127.0.0.1 9157, waiting....
+2017-09-18 10:30:50  [ nioEventLoopGroup-4-1:56009 ] - [ INFO ]  can not connect to dbserver 127.0.0.1 9157, waiting....
+2017-09-18 10:31:45  [ nioEventLoopGroup-8-2:110360 ] - [ DEBUG ]  Server [127.0.0.1] disconnected
+2017-09-18 10:37:00  [ main:0 ] - [ DEBUG ]  no sigar-amd64-winnt.dll in java.library.path
+org.hyperic.sigar.SigarException: no sigar-amd64-winnt.dll in java.library.path
+	at org.hyperic.sigar.Sigar.loadLibrary(Sigar.java:172)
+	at org.hyperic.sigar.Sigar.<clinit>(Sigar.java:100)
+	at cxz.jet.MonitorConntor.initSigar(MonitorConntor.java:221)
+	at cxz.jet.MonitorConntor.<clinit>(MonitorConntor.java:43)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:147)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:89)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateBean(AbstractAutowireCapableBeanFactory.java:1098)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1050)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:510)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:482)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:306)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:230)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:302)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:197)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:772)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:838)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:537)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:139)
+	at org.springframework.context.support.ClassPathXmlApplicationContext.<init>(ClassPathXmlApplicationContext.java:83)
+	at engine.bean.BeanFactory.init(BeanFactory.java:12)
+	at engine.server.ServerBase.InitBean(ServerBase.java:71)
+	at engine.server.ServerBase.InitAll(ServerBase.java:25)
+	at cxz.jet.gmserver.CenterServer.<init>(CenterServer.java:24)
+	at cxz.jet.gmserver.CenterServer.main(CenterServer.java:114)
+2017-09-18 10:37:00  [ main:23 ] - [ DEBUG ]  BeanFactory inited !
+2017-09-18 10:37:01  [ main:385 ] - [ INFO ]  Start listening for client @ 9161
+2017-09-18 10:37:01  [ Thread-3:404 ] - [ DEBUG ]  httpserver started at 18080
+2017-09-18 10:37:01  [ Thread-4:404 ] - [ DEBUG ]  tcpserver started at 9161
+2017-09-18 10:37:04  [ nioEventLoopGroup-8-1:3905 ] - [ DEBUG ]  Server connect from 127.0.0.1
+2017-09-18 10:37:08  [ nioEventLoopGroup-8-2:7930 ] - [ DEBUG ]  Server connect from 127.0.0.1

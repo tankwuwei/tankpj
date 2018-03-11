@@ -1,0 +1,16 @@
+<table align="center" border=0>
+	<tr>
+		<td height="200"><h1>ERROR</h1></td>
+	</tr>
+	<tr>
+		<td><p>$error</p>
+		</td>
+	</tr>
+	<tr>
+		<td align="right" height="200" valign="bottom">
+			<p>
+				<a href="javascript:history.back(-1)">返回上一页</a>
+			</p>
+		</td>
+	</tr>
+</table>

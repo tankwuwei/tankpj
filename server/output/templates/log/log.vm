@@ -1,0 +1,34 @@
+
+	<table class="hovertable" width="100%">
+		<tr onmouseover="this.style.backgroundColor='#66FF66';" onmouseout="this.style.backgroundColor='#FFFFFF';">
+			<td height="30px"><a href=/log/battletimes style='text-decoration:none;'>战斗次数统计</a></td>
+		</tr>
+		<tr onmouseover="this.style.backgroundColor='#66FF66';" onmouseout="this.style.backgroundColor='#FFFFFF';">
+			<td height="30px"><a href=/log/battlelog style='text-decoration:none;'>战斗记录</a></td>
+		</tr>
+		<tr onmouseover="this.style.backgroundColor='#66FF66';" onmouseout="this.style.backgroundColor='#FFFFFF';">
+			<td height="30px"><a href=/log/playerbattlelog style='text-decoration:none;'>玩家战斗数据</a></td>
+		</tr>
+		<tr onmouseover="this.style.backgroundColor='#66FF66';" onmouseout="this.style.backgroundColor='#FFFFFF';">
+			<td height="30px"><a href=/log/playeropenboxlog style='text-decoration:none;'>玩家开箱记录</a></td>
+		</tr>
+		<tr onmouseover="this.style.backgroundColor='#66FF66';" onmouseout="this.style.backgroundColor='#FFFFFF';">
+			<td height="30px"><a href=/log/playerbuyitemlog style='text-decoration:none;'>玩家购买道具记录</a></td>
+		</tr>
+		<tr onmouseover="this.style.backgroundColor='#66FF66';" onmouseout="this.style.backgroundColor='#FFFFFF';">
+			<td height="30px">AAAA</td>
+		</tr>
+	</table>
+
+
+
+
+<style type="text/css">
+table.hovertable {
+	font-size:12px;
+	border-width: 0px;
+}
+
+</style>
+
+

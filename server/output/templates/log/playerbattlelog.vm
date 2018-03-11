@@ -1,0 +1,98 @@
+
+<form id="form1" name="form1" method="post" action="/log/playerbattlelog" onsubmit="return check();">
+
+	<p>
+		<input type="datetime-local" name="starttime" value="$starttime" />～<input type="datetime-local" name="endtime" value="$endtime" />
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="text" name="nickname" id="nickname" value="$!nickname" placeholder="nickname 模糊查找" size="20" style="background-color: #CCFFCC">
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="submit" name="submit" id="submit" value="    查询    ">
+	</p>
+
+</form>
+
+
+
+
+<hr>
+
+	<table border="0">
+		<tbody>
+			<tr>
+				<th scope="col" align="left" width="150px">No.</th>
+				<th scope="col" align="left" width="250px">id</th>
+				<th scope="col" align="left" width="250px">playerid</th>
+				<th scope="col" align="left" width="200px">nickname</th>
+				<th scope="col" align="left" width="100px">排名</th>
+				<th scope="col" align="left" width="100px">击杀</th>
+				<th scope="col" align="left" width="100px">伤害</th>
+				<th scope="col" align="left" width="100px">承受伤害</th>
+				<th scope="col" align="left" width="150px">time（分钟）</th>
+				<th scope="col" align="left" width="150px">travel（米）</th>
+				<th scope="col" align="left" width="300px">deadtime</th>
+				<th scope="col" align="left" width="200px">总奖励</th>
+				<th scope="col" align="left" width="200px">排名奖励</th>
+				<th scope="col" align="left" width="200px">击杀奖励</th>
+				<th scope="col" align="left" width="200px">伤害奖励</th>
+			</tr>
+			#foreach($a in $alldata)
+			<tr>
+				<td>$!{velocityCount}</td>
+				<td>$a.id</td>
+				<td>$a.playerid</td>
+				<td>$a.nickname</td>
+				<td>$a.rank</td>
+				<td>$a.killed</td>
+				<td>$a.damage</td>
+				<td>$a.hurt</td>
+				<td>$a.time</td>
+				<td>$a.travel</td>
+				<td>$a.deadtime</td>
+				<td>$a.reward</td>
+				<td>$a.rankreward</td>
+				<td>$a.killedreward</td>
+				<td>$a.damagereward</td>
+			</tr>
+			#end
+		</tbody>
+	</table>
+
+
+#if($alldata.size()>0)
+#parse("templates/paging.vm")
+#end
+
+
+
+
+<script type="text/javascript">
+
+
+function check(){
+	if(form1.starttime.value==null || form1.starttime.value==""){
+		alert("请输入开始时间！");
+		return false;
+	}
+
+	if(form1.endtime.value==null || form1.endtime.value==""){
+		alert("请输入结束时间！");
+		return false;
+	}
+
+	if(form1.starttime.value > form1.endtime.value){
+		alert("开始时间应该小于结束时间！");
+		return false;
+	}
+
+	var nickname = form1.nickname.value.trim();
+	if (nickname==null || nickname=="") {
+		alert("请输入玩家昵称！");
+		return false;
+	}
+
+	return true;
+}
+
+
+
+</script>

@@ -1,0 +1,83 @@
+
+<h4>playerid: $playerid, nickname: $nickname</h4>
+
+<br>
+
+<fieldset>
+	<table border="0">
+		<tbody>
+			<tr>
+				<th align="right" width="600px">总局数</th>
+				<td width="50px"></td>
+				<td align="left" width="600px">$data.playrounds</td>
+			</tr>
+			<tr>
+				<th align="right" width="600px">总时长（分钟）</th>
+				<td width="50px"></td>
+				<td align="left" width="600px">$data.playtime</td>
+			</tr>
+			<tr>
+				<th align="right" width="600px">总行驶（米）</th>
+				<td width="50px"></td>
+				<td align="left" width="600px">$data.travel</td>
+			</tr>
+			<tr>
+				<th align="right" width="600px">平均行驶（米）</th>
+				<td width="50px"></td>
+				<td align="left" width="600px">$data.avgtravel</td>
+			</tr>
+			<tr>
+				<th align="right" width="600px">第一名次数</th>
+				<td width="50px"></td>
+				<td align="left" width="600px">$data.winrounds</td>
+			</tr>
+			<tr>
+				<th align="right" width="600px">前5名次数</th>
+				<td width="50px"></td>
+				<td align="left" width="600px">$data.top5rounds</td>
+			</tr>
+			<tr>
+				<th align="right" width="600px">第一名概率</th>
+				<td width="50px"></td>
+				<td align="left" width="600px">$data.winratio</td>
+			</tr>
+			<tr>
+				<th align="right" width="600px">前5名概率</th>
+				<td width="50px"></td>
+				<td align="left" width="600px">$data.top5ratio</td>
+			</tr>
+			<tr>
+				<th align="right" width="600px">击杀总数</th>
+				<td width="50px"></td>
+				<td align="left" width="600px">$data.destorys</td>
+			</tr>
+			<tr>
+				<th align="right" width="600px">击杀/死亡比</th>
+				<td width="50px"></td>
+				<td align="left" width="600px">$data.kdratio</td>
+			</tr>
+			<tr>
+				<th align="right" width="600px">总伤害</th>
+				<td width="50px"></td>
+				<td align="left" width="600px">$data.totaldamage</td>
+			</tr>
+			<tr>
+				<th align="right" width="600px">平均伤害</th>
+				<td width="50px"></td>
+				<td align="left" width="600px">$data.avgdamage</td>
+			</tr>
+			<tr>
+				<th align="right" width="600px">承受伤害</th>
+				<td width="50px"></td>
+				<td align="left" width="600px">$data.totalhurt</td>
+			</tr>
+			<tr>
+				<th align="right" width="600px">平均承受伤害</th>
+				<td width="50px"></td>
+				<td align="left" width="600px">$data.avghurt</td>
+			</tr>
+		</tbody>
+	</table>
+</fieldset>
+
+

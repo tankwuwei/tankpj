@@ -1,0 +1,22 @@
+
+id: $id, propid: $propid, ID_GameBox: $ID_GameBox
+
+<br>
+<br>
+
+<fieldset>
+	<table border="0">
+		<tbody>
+			<tr>
+				<th align="left" width="600px">(GamePropID, Probability)</th>
+				<th align="left" width="200px">Count</th>
+			</tr>
+			<tr>
+				<td>$Content</td>
+				<td>$Count</td>
+			</tr>
+		</tbody>
+	</table>
+</fieldset>
+
+

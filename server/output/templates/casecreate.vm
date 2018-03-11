@@ -1,0 +1,26 @@
+<h2>新建Case</h2>
+<hr />
+<form action="submitcreate" method="post">
+	<p>
+		<label for="textfield3">账号:</label> <input name="account" type="text"
+			required id="textfield3"> <label for="textfield3">角色名:</label>
+		<input name="rolename" type="text" required id="textfield2">
+	</p>
+	<p>
+	<label for="textfield4">概述:</label> <input name="title" type="text"
+		required id="textfield">
+	</p>
+	<p>
+		<label for="textarea2">详细描述:</label> <br />
+		<textarea name="detail" cols="100" rows="5" required id="textarea"></textarea>
+	</p>
+	<p>
+		<label for="textfield5">玩家电话:</label> <input type="text" name="tel"
+			id="textfield5"> <label for="textfield5">玩家QQ:</label> <input
+			type="text" name="qq" id="textfield4">
+
+	</p>
+
+	<input type="submit" name="submit" id="submit" value="提交">
+
+</form>

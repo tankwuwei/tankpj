@@ -1,0 +1,53 @@
+
+<p>
+<h3>GM System账号管理</h3>
+</p>
+<table border="1">
+	<tbody>
+		<tr bgcolor="#808000">
+			<th scope="col" width="10">id</th>
+			<th scope="col" width="100">账号</th>
+			<th scope="col">密码</th>
+			<th scope="col" width="150">登录时间</th>
+			<th scope="col">权限</th>
+			<th scope="col">操作记录</th>
+			<th scope="col">操作</th>
+		</tr>
+		#foreach($info in $all)
+		<tr>
+			<th scope="row">$info.id</th>
+			<td>$info.account</td>
+			<td>
+				<form action="/manager/submitaccountchangepassword" method="post">
+					<label for="textfield">密码:</label> <input type="text"
+						name="password" id="textfield"> <input type="submit"
+						name="submit" id="submit" value="修改"> <input type="hidden"
+						name="id" value=$info.id>
+				</form>
+
+			</td>
+			<td>$info.logintime</td>
+			<td>
+				<form method="post" action="/manager/submitaccountchangeprivilege">
+					GTManager<input type="checkbox" name="gt" #if($info.gtmanager) checked #end>&nbsp; 
+					KPI<input type="checkbox" name="kpi" #if($info.kpi) checked #end>&nbsp; 
+					Monitor<input type="checkbox" name="monitor" #if($info.monitor) checked #end>&nbsp;
+					GameMaster<input type="checkbox" name="gm" #if($info.gm) checked #end>&nbsp; 
+					Log<input type="checkbox" name="log" #if($info.log) checked #end>&nbsp; 
+					case<input type="checkbox" name="case" #if($info.gmcase) checked #end>&nbsp;
+					
+					<input type="hidden" name="id" value=$info.id> 
+					<input type="submit" value="修改">
+				</form>
+			</td>
+			<td><a href=actionlog?id=$info.id>查看</a></td>
+			<td>#if($info.state == 0) <a href=/manager/banaccount?id=$info.id>停用</a>
+				#else <a href=/manager/unbanaccount?id=$info.id>启用</a> #end
+			</td>
+		</tr>
+		#end
+	</tbody>
+</table>
+<p>
+	<a href=/manager/createaccount>创建新gm账号</a>
+</p>

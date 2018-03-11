@@ -1,0 +1,71 @@
+ <!-- 分页模板 -->
+ <url class="page">
+     #set($FRONT_LEN = 5)
+     #set($BEHIND_LEN = 5) 
+     #set($PAGER_LEN = 10)
+     #set($last = $!{pager.pageNumber} - 1)
+     #set($next = $!{pager.pageNumber} + 1)
+      <!--设置页码列表开始和结束  -->
+      <!--如果总页数<=展示长度  -->
+     #if($!{pager.totalPage} <= $!{PAGER_LEN})
+             #set($header = 1)
+             #set($ender = $!{pager.totalPage})
+     <!--如果总页数>展示长度  -->      
+      #else
+                  <!-- 当前页 < 展示长度-->
+                   #if($!{pager.pageNumber} < $!{PAGER_LEN})
+                       #set($header = 1)
+                     #set($ender = $PAGER_LEN)
+                 <!--当前页 >= 展示长度 && 定尾部，再定头部  -->
+                   #else
+                            #set($ender = $!{pager.pageNumber} + $!{BEHIND_LEN})
+                            #if($!ender > $!{pager.totalPage})
+                                #set($ender = $!{pager.totalPage})
+                            #end
+                            #set($header = $!ender - $!{PAGER_LEN})
+                 #end  
+      #end
+
+     <span #if($!{pager.pageNumber} == 1) style="display:none" #end>
+           <a href="$!{url}?page=$!last&$!{paras}">上一页</a>
+      </span>
+     <!-- 页码列表 -->
+       #foreach($p in [$!{header}..$!{ender}])
+         <span>
+          #if($!{pager.pageNumber} == $!{p})
+          	$!{p}
+          #else
+          	<a href="$!{url}?page=$!{p}&$!{paras}">$!{p}</a>
+          #end
+         </span>
+       #end
+     <span #if($!{pager.pageNumber} == $!{pager.totalPage}) style="display:none" #end>
+         <a href="$!{url}?page=$!next&$!{paras}">下一页</a>
+     </span>
+     <br>
+     <span>
+       	  每页$!{pager.pageSize}条, 共$!{pager.totalRow}条, 共$!{pager.totalPage}页 
+         <input type="number" placeholder="页码" id="page"  style="width:70px;" min="1" max="$!{pager.totalPage}">
+         <a href="javascript:void(0)" onclick="f()">跳转</a>
+         <script type="text/javascript">
+			var page = document.getElementById("page");
+			page.onkeyup = function(){
+				this.value=this.value.replace(/[^0-9]/g,'');
+				if(parseInt(page.value)>$!{pager.totalPage}){
+				  page.value = $!{pager.totalPage};
+				}
+				if(parseInt(page.value)==0){
+				  page.value = 1;
+				}
+			}
+			function f(){
+				if (page.value == "") {
+					alert("请输入页码");
+				} else {
+					window.location.href='$!{url}?page=' + page.value+'&$!{paras}';
+				}
+			}
+		</script>
+         
+     </span>
+ </url>

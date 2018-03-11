@@ -1,0 +1,91 @@
+<fieldset>
+	<legend>查询条件</legend>
+	<form name="form1" method="post" action="/log/battlelog">
+		<input type="datetime-local" name="starttime" value="$starttime" />～<input type="datetime-local" name="endtime" value="$endtime" />
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="submit" value="    查询    ">
+		<input type="hidden" name="flag" value=$flag>
+	</form>
+</fieldset>
+
+
+
+#if($flag==1)
+
+<fieldset>
+	<legend>查询结果</legend>
+	<table border="0">
+		<tbody>
+			<tr>
+				<th scope="col" align="left" width="200px">id</th>
+				<th scope="col" align="left" width="100px">zoneid</th>
+				<th scope="col" align="left" width="300px">serverid（玩家数据）</th>
+				<th scope="col" align="left" width="200px">starttime</th>
+				<th scope="col" align="left" width="200px">endtime</th>
+				<th scope="col" align="left" width="200px">时长（分钟）</th>
+				<th scope="col" align="left" width="200px">人数</th>
+			</tr>
+			#foreach($a in $all)
+			<tr>
+				<td>$a.id</td>
+				<td>$a.zoneid</td>
+				<td><a href="javascript:;" onclick="playerdata('$a.zoneid', '$a.serverid')">$a.serverid</a></td>
+				<td>$a.starttime</td>
+				<td>$a.endtime</td>
+				<td>$a.time</td>
+				<td>$a.playernum</td>
+			</tr>
+			#end
+		</tbody>
+	</table>
+</fieldset>
+
+
+#if($all.size()>0)
+#parse("templates/paging.vm")
+#end
+
+
+
+<!--_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="$fileserver/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="$fileserver/lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="$fileserver/static/h-ui/js/H-ui.min.js"></script> 
+<script type="text/javascript" src="$fileserver/static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="$fileserver/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+
+
+function playerdata(zoneid, serverid){
+	layer_show('玩家数据','/log/battlelog/playerdata?zoneid='+zoneid+'&serverid='+serverid,'1600','800');
+}
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#end 
+
+
+

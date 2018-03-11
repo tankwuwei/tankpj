@@ -1,0 +1,55 @@
+<form method="post" action="/monitor/monitoragent">
+	采样时间<input type="datetime-local" name="starttime" value="$starttime" />～<input type="datetime-local" name="endtime" value="$endtime" />
+	<input type="submit" value="    查询    ">
+	<input type="hidden" name="ip" value=$ip>
+</form>
+
+<hr>
+
+
+
+	<div id="container" style="min-width:700px;height:500px"></div>
+
+
+<!--_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="$fileserver/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="$fileserver/lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="$fileserver/static/h-ui/js/H-ui.min.js"></script> 
+<script type="text/javascript" src="$fileserver/static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="$fileserver/lib/hcharts/Highcharts/5.0.6/js/highcharts.js"></script>
+<script type="text/javascript" src="$fileserver/lib/hcharts/Highcharts/5.0.6/js/modules/exporting.js"></script>
+<script type="text/javascript">
+$(function () {
+    $('#container').highcharts({
+        chart: {
+            type: 'area'
+        },
+        title: {
+            text: 'Agent服务器监控'
+        },
+        subtitle: {
+            text: 'IP:$ip'
+        },
+        xAxis: {
+            categories: $datax
+        },
+        yAxis: {
+            title: {
+                text: 'cpu空闲率&内存空闲率 (%)'
+            },
+            labels: {
+                formatter: function() {
+                    return this.value;
+                }
+            }
+        },
+        tooltip: {
+            pointFormat: '{series.name}<br>{point.y}%'
+        },
+
+        series: $datay
+    });
+});
+</script>

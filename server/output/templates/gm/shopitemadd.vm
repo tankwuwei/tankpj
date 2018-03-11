@@ -1,0 +1,54 @@
+
+
+<form id="form1" name="form1" method="post" action="/gmtool/shopitemAddSave" onsubmit="return chk();">
+	<fieldset>
+		<legend></legend>
+			<p>
+				propid:<input type="number" name="propid" style="width:150px;" min="0">&nbsp;&nbsp;&nbsp;&nbsp;
+				price:<input type="number" name="price" style="width:150px;" min="0">&nbsp;&nbsp;&nbsp;&nbsp;
+				
+			</p>
+			<p>
+				type:
+				<select id="selecttype" name="type" style="width:100px;">
+					<option value="0">Normal</option>
+					<option value="1">New</option>
+					<option value="2">Hot</option>
+				</select>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				onsale:
+				<select id="selectonsale" name="onsale" style="width:100px;">
+					<option value="0">On</option>
+					<option value="1">Off</option>
+				</select>
+			</p>
+			<p align="center">
+				<input type="submit" name="submit" id="submit" value="    保存    ">
+			</p>
+
+
+
+			
+	</fieldset>
+</form>
+
+
+
+<script >
+
+function chk(){
+	if(form1.propid.value==null || form1.propid.value==""){
+		alert("propid is not null.");
+		return false;
+	}
+
+	if(form1.price.value==null || form1.price.value==""){
+		alert("price is not null.");
+		return false;
+	}
+
+	return true;
+}
+
+
+</script>

@@ -1,0 +1,47 @@
+<?xml version="1.0" ?>
+<configuration>
+  <!-- Uncomment if you are using the logback plugin for eclipse <consolePlugin/> -->
+
+  <appender class="ch.qos.logback.core.ConsoleAppender" name="CONSOLE">
+    <encoder>
+      <pattern> %date %-5level %logger %msg%n</pattern>
+    </encoder>
+  </appender>
+   
+  <appender name="ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <!-- rollover daily -->
+      <fileNamePattern>log/gameslog-%d{yyyy-MM-dd}.%i.txt</fileNamePattern>
+      <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+        <!-- or whenever the file size reaches 100MB -->
+        <maxFileSize>10MB</maxFileSize>
+      </timeBasedFileNamingAndTriggeringPolicy>
+    </rollingPolicy>
+    <encoder>
+      <pattern>%date %-5level %logger %msg%n</pattern>
+    </encoder>
+  </appender>
+  <!-- 
+  <appender class="ch.qos.logback.core.FileAppender" name="FILE">
+    <File>log/log.txt</File>
+    <Append>true</Append>
+    <encoder>
+      <pattern>%date %-5level %logger %msg%n</pattern>
+    </encoder>
+  </appender> -->
+   
+  <root>
+    <level value="INFO"/>
+<!--     <appender-ref ref="CONSOLE"/> -->
+    <appender-ref ref="ROLLING"/>
+  </root>
+   
+  <logger name="org.hibernate">
+    <level value="WARN"/>
+  </logger>
+   
+  <logger name="ch.qos">
+    <level value="WARN"/>
+  </logger>
+   
+</configuration>

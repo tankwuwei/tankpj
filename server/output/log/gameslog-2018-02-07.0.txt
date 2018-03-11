@@ -1,0 +1,47 @@
+2018-02-07 10:02:01,800 INFO  com.zaxxer.hikari.HikariDataSource HikariPool-1 - Started.
+2018-02-07 10:02:02,297 INFO  com.zaxxer.hikari.HikariDataSource HikariPool-2 - Started.
+2018-02-07 10:02:03,016 INFO   init dbobjects.gamedb.AccountData storage
+2018-02-07 10:02:03,021 INFO   init dbobjects.gamedb.IDSeed storage
+2018-02-07 10:02:03,026 INFO   init dbobjects.gamedb.PlayerData storage
+2018-02-07 10:02:03,031 INFO   init dbobjects.gamedb.TankModelTable storage
+2018-02-07 10:02:03,035 INFO   init dbobjects.gamedb.PlayerFightStatiticTable storage
+2018-02-07 10:02:03,043 INFO   init dbobjects.gamedb.RankWinRoundsTable storage
+2018-02-07 10:02:03,048 INFO   init dbobjects.gamedb.RankTop5RoundsTable storage
+2018-02-07 10:02:03,053 INFO   init dbobjects.gamedb.RankDestorysTable storage
+2018-02-07 10:02:03,058 INFO   init dbobjects.gamedb.RankLevelTable storage
+2018-02-07 10:02:03,063 INFO   init dbobjects.gamedb.UnDistributeRewardTable storage
+2018-02-07 10:02:03,068 INFO   init dbobjects.gamedb.ItemTable storage
+2018-02-07 10:02:03,073 INFO   init dbobjects.gamedb.ShortcutTable storage
+2018-02-07 10:02:03,077 INFO   init dbobjects.gamedb.NickNameTable storage
+2018-02-07 10:02:03,082 INFO   init dbobjects.gamedb.ShopItemTable storage
+2018-02-07 10:02:03,087 INFO   init dbobjects.gamedb.BlacklistTable storage
+2018-02-07 10:02:03,091 INFO   init dbobjects.gamedb.BroadcastTable storage
+2018-02-07 10:02:03,095 INFO   init dbobjects.gamedb.MailPlayerTable storage
+2018-02-07 10:02:03,099 INFO   init dbobjects.gamedb.PlayerClientSetting storage
+2018-02-07 10:02:03,103 INFO   init dbobjects.gamedb.TeamTable storage
+2018-02-07 10:02:03,131 INFO  com.zaxxer.hikari.HikariDataSource HikariPool-3 - Started.
+2018-02-07 10:02:03,285 INFO   init dbobjects.logdb.LogAccountAct storage
+2018-02-07 10:02:03,290 INFO   init dbobjects.logdb.LogPlayerAct storage
+2018-02-07 10:02:03,294 INFO   init dbobjects.logdb.LogMoney storage
+2018-02-07 10:02:03,299 INFO   init dbobjects.logdb.LogItem storage
+2018-02-07 10:02:03,304 INFO   init dbobjects.logdb.LogBattle storage
+2018-02-07 10:02:03,308 INFO   init dbobjects.logdb.PlayerFightTable storage
+2018-02-07 10:02:03,313 INFO   init dbobjects.logdb.Logopenbox storage
+2018-02-07 10:02:03,330 INFO  com.zaxxer.hikari.HikariDataSource HikariPool-4 - Started.
+2018-02-07 10:02:03,428 INFO   init dbobjects.gmdb.GMAccount storage
+2018-02-07 10:02:03,432 INFO   init dbobjects.gmdb.GmCase storage
+2018-02-07 10:02:03,437 INFO   init dbobjects.gmdb.CaseProcess storage
+2018-02-07 10:02:03,441 INFO   init dbobjects.gmdb.AgentSystemInfo storage
+2018-02-07 10:02:03,445 INFO   init dbobjects.gmdb.AgentServiceInfo storage
+2018-02-07 10:02:03,445 INFO   dbserver tcp initing
+2018-02-07 10:02:06,851 INFO   [id: 0xfed4495a, L:/127.0.0.1:8057 - R:/127.0.0.1:1451] connect .
+2018-02-07 10:02:06,851 INFO   [id: 0x96f09987, L:/127.0.0.1:8057 - R:/127.0.0.1:1452] connect .
+2018-02-07 10:02:07,084 INFO   [id: 0xb9f6089e, L:/127.0.0.1:8057 - R:/127.0.0.1:1517] connect .
+2018-02-07 10:02:07,084 INFO   [id: 0x2d9d1bf8, L:/127.0.0.1:8057 - R:/127.0.0.1:1518] connect .
+2018-02-07 10:02:07,092 INFO   [id: 0x33afcb56, L:/127.0.0.1:8057 - R:/127.0.0.1:1583] connect .
+2018-02-07 10:02:07,093 INFO   [id: 0x1d904100, L:/127.0.0.1:8057 - R:/127.0.0.1:1584] connect .
+2018-02-07 10:02:11,593 INFO   [id: 0x553582d0, L:/127.0.0.1:8057 - R:/127.0.0.1:1785] connect .
+2018-02-07 10:02:11,622 INFO   [id: 0x2c4c837d, L:/127.0.0.1:8057 - R:/127.0.0.1:1818] connect .
+2018-02-07 10:02:11,631 INFO   [id: 0xc500a8dc, L:/127.0.0.1:8057 - R:/127.0.0.1:1851] connect .
+2018-02-07 10:02:11,641 INFO   [id: 0xb6d8b3a4, L:/127.0.0.1:8057 - R:/127.0.0.1:1916] connect .
+2018-02-07 10:02:11,641 INFO   [id: 0x00223fa9, L:/127.0.0.1:8057 - R:/127.0.0.1:1917] connect .

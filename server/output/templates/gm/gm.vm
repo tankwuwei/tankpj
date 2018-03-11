@@ -1,0 +1,37 @@
+
+<table class="hovertable" width="100%" >
+	<tr onmouseover="this.style.backgroundColor='#66FF66';" onmouseout="this.style.backgroundColor='#FFFFFF';">
+		<td height="30px"><a href=/gmtool/account style='text-decoration:none;'>Account、封停、解封</a></td>
+	</tr>
+	<tr onmouseover="this.style.backgroundColor='#66FF66';" onmouseout="this.style.backgroundColor='#FFFFFF';">
+		<td height="30px"><a href=/gmtool/player style='text-decoration:none;'>Player、道具、战斗数据</a></td>
+	</tr>
+	<tr onmouseover="this.style.backgroundColor='#66FF66';" onmouseout="this.style.backgroundColor='#FFFFFF';">
+		<td height="30px"><a href=/gmtool/shopitem style='text-decoration:none;'>商城道具管理</a></td>
+	</tr>
+	<tr onmouseover="this.style.backgroundColor='#66FF66';" onmouseout="this.style.backgroundColor='#FFFFFF';">
+		<td height="30px"><a href=/gmtool/ipblacklist style='text-decoration:none;'>IP黑名單</a></td>
+	</tr>
+	<tr onmouseover="this.style.backgroundColor='#66FF66';" onmouseout="this.style.backgroundColor='#FFFFFF';">
+		<td height="30px"><a href=/gmtool/broadcast style='text-decoration:none;'>广播消息</a></td>
+	</tr>
+	<tr onmouseover="this.style.backgroundColor='#66FF66';" onmouseout="this.style.backgroundColor='#FFFFFF';">
+		<td height="30px"><a href=/gmtool/email style='text-decoration:none;'>E-Mail发放道具</a></td>
+	</tr>
+	<tr onmouseover="this.style.backgroundColor='#66FF66';" onmouseout="this.style.backgroundColor='#FFFFFF';">
+		<td height="30px"><a href=/gmtool/emaillog style='text-decoration:none;'>E-Mail（玩家是否阅读、是否领取道具、是否删除）</a></td>
+	</tr>
+</table>
+
+
+
+
+<style type="text/css">
+table.hovertable {
+	font-size:12px;
+	border-width: 0px;
+}
+
+</style>
+
+

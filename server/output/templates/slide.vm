@@ -1,0 +1,53 @@
+<hr>
+<table border="0" width="100%">
+  <tbody>
+    <tr>
+      <th scope="col" width="10%">
+      #if($accountinfo.kpi)
+      <a href="/kpi">KPI</a>
+      #end
+      </th>
+      <th scope="col" width="10%">
+      #if($accountinfo.monitor)
+      <a href="/monitor">Monitor</a>
+      #end
+      </th>      
+      <th scope="col" width="10%">
+      #if($accountinfo.gm)
+      <a href="/gmtool">Game Master</a>
+      #end
+      </th>
+      <th scope="col" width="10%">
+      #if($accountinfo.log)
+      <a href="/log">Log</a>
+      #end
+      </th>
+      <th scope="col" width="10%">
+      #if($accountinfo.gmcase)
+      <a href="/case">Case</a>
+      #end
+      </th>
+      <th scope="col" width="10%">
+      #if($accountinfo.gtmanager)
+      <a href="/manager">GTAccount</a>
+      #end
+      </th>
+
+      <th scope="col" width="20%">
+      </th>
+
+	<td scope="col" width="15%" align="right">
+		<font size="1" color="red">欢迎您，</font>
+		<font size="5" color="red">$accountinfo.account</font>
+	</td>
+
+      <th scope="col" width="5%">
+      <a href="/logout">安全退出</a>
+      </th>
+
+
+      
+    </tr>
+  </tbody>
+</table>
+<hr>

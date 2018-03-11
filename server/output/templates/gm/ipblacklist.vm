@@ -1,0 +1,104 @@
+
+
+<form id="form1" name="form1" method="post" action="/gmtool/ipblackadd" onsubmit="return chkip();">
+	<fieldset>
+		<legend>添加黑名單</legend>
+		IP：<input type="input" name="ip">
+		<font size="1" color="red">格式：0.0.0.0</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="submit" name="submit" id="submit" value="        保存        ">
+	</fieldset>
+</form>
+
+<p>
+	<input type="button" name="start" value="        刷新黑名單列表        " onclick="reget()">
+</p>
+
+
+<fieldset>
+	<legend>黑名單列表</legend>
+	<a href="javascript:;" onclick="del()">刪除</a>
+	<table border="0">
+		<tbody>
+			<tr>
+				<th scope="col" align="left" width="100px"><input type="checkbox" name="allcheck" id="allcheck" onclick="allcheck()"></th>
+				<th scope="col" align="left" width="350px">IP</th>
+			</tr>
+			#foreach($a in $all)
+			<tr>
+				<td><input type="checkbox" name="chkid" value="$a.ip"></td>
+				<td>$a.ipstr</td>
+			</tr>
+			#end
+		</tbody>
+	</table>
+</fieldset>
+
+
+
+
+<script type="text/javascript">
+
+function chkip(){
+	var ip = form1.ip.value;
+	if (ip==null || ip=="") {
+		alert("IP不能为空！");
+		return false;
+	}
+	var reg = /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$/;
+	if(!reg.test(ip)){
+		alert("IP格式不正确！");
+		return false;
+	}
+	return true;
+}
+
+
+
+function del(){
+	var ids=getids();
+	if(ids==""){
+		alert("请先选择IP！");
+	}else{
+		if(confirm('确认要删除吗？')){
+			window.location.href='/gmtool/ipblackdel?ids='+ids;	
+		}else{
+		}
+	}
+}
+
+
+function reget(){
+	window.location.href='/gmtool/ipblacklist';	
+}
+
+
+
+function allcheck(){
+	var chkid=document.getElementsByName("chkid");
+	if(document.getElementById("allcheck").checked==true){
+		for(var i=0;i<chkid.length;i++){
+			chkid[i].checked=true;
+		}
+	}else{
+		for(var i=0;i<chkid.length;i++){
+			chkid[i].checked=false;
+		}
+	}
+}
+
+function getids(){
+	var ids="";
+	var chkid = document.getElementsByName("chkid");
+	for(var i=0;i<chkid.length;i++){
+		if(chkid[i].checked){
+			ids+=chkid[i].value;
+			ids+=",";
+		}
+	}
+	if(ids!=""){
+		ids=ids.substring(0, ids.length-1);
+	}
+	return ids;
+}
+
+</script>

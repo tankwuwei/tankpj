@@ -1,0 +1,89 @@
+{
+    "single_gamedb": [
+        {
+            "id": "center_sharedb",
+            "ip": "172.16.2.33",
+            "oip": "172.16.2.33",
+            "cid": "2742",
+            "status": 1,
+            "port": [
+                {
+                    "internalPort": "80",
+                    "externalPort": "10001"
+                },
+                {
+                    "internalPort": "3306",
+                    "externalPort": "20013"
+                }
+            ],
+            "extra": {
+                "account": "root",
+                "password": "7cool123456"
+            }
+        }
+    ],
+    "single_gamesvr": [
+        {
+            "id": "single_gamesvr_1",
+            "ip": "0.0.0.0",
+            "oip": "0.0.0.0",
+            "cid": "2760",
+            "status": 0,
+            "port": [
+                {
+                    "internalPort": "4443",
+                    "externalPort": "4443"
+                }
+            ],
+            "extra": {
+                "zoneid": "10",
+                "platform": "TX",
+                "project": "freestyle"
+            }
+        }
+    ],
+     "single_dbsvr": [
+        {
+            "id": "single_gamesvr_1",
+            "ip": "0.0.0.0",
+            "oip": "0.0.0.0",
+            "cid": "2760",
+            "status": 0,
+            "port": [
+                {
+                    "internalPort": "10083",
+                    "externalPort": "10083"
+                }
+            ],
+            "extra": {
+                "zoneid": "10",
+                "platform": "TX",
+                "project": "freestyle"
+            }
+        }
+    ],
+         "single_linksvr": [
+        {
+            "id": "single_linksvr_1",
+            "ip": "0.0.0.0",
+            "oip": "0.0.0.0",
+            "cid": "2700",
+            "status": 0,
+            "port": [
+                {
+                    "internalPort": "7003",
+                    "externalPort": "7003"
+                },
+                {
+                    "internalPort": "8001",
+                    "externalPort": "8001"
+                }
+            ],
+            "extra": {
+                "zoneid": "10",
+                "platform": "TX",
+                "project": "freestyle"
+            }
+        }
+    ]
+}

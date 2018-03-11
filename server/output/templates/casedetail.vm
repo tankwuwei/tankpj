@@ -1,0 +1,41 @@
+<p>
+	<label for="textfield3">账号:</label> <input name="textfield3"
+		type="text" readonly id="textfield3" value=$data.account> <label
+		for="textfield3">角色名:</label> <input name="textfield2" type="text"
+		readonly value=$data.rolename>
+</p>
+<p>
+	<label for="textfield4">概述:</label> <input name="textfield" type="text"
+		readonly value=$data.title>
+</p>
+<p>
+	<label for="textarea2">详细描述:</label> <br />
+	<textarea name="textarea" cols="100" rows="5" readonly width=400>$data.detail</textarea>
+</p>
+<p>
+	<label for="textfield5">玩家电话:</label> <input type="text"
+		name="textfield5" readonly value=$data.tel> <label
+		for="textfield5">玩家QQ:</label> <input type="text" name="textfield4"
+		readonly value=$data.qq>
+
+</p>
+
+<table width="50%" border="1" cellpadding="0">
+	<tbody>
+		<tr>
+			<th scope="row">操作者</th>
+			<td>时间</td>
+			<td>操作类型</td>
+			<td>备注</td>
+		</tr>
+		#foreach($info in $process)
+		<tr>
+			<th>$info.gmname</th>
+			<td>$info.processtime</td>
+			<td>操作类型</td>
+			<td>备注</td>
+		</tr>
+		#end
+	</tbody>
+</table>
+

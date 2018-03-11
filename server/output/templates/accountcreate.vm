@@ -1,0 +1,31 @@
+<h2>新建God Tools账号</h2>
+<form id="form1" action="/manager/submitaccountcreate" method="post">
+  <p>
+    <label for="textfield">账号:</label>
+    <input name="account" type="text" required id="textfield">
+    <br/>
+    <label for="textfield2">密码:</label>
+    <input name="password" type="text" required id="textfield2">
+  </p>
+  <fieldset>
+    <legend>权限</legend>
+    <p>
+      <input type="checkbox" name="gt" id="checkbox">
+      <label for="checkbox">GT Master</label>
+      <input type="checkbox" name="kpi" id="checkbox1">
+      <label for="checkbox">KPI </label>
+      <input type="checkbox" name="monitor" id="checkbox2">
+      <label for="checkbox2">Monitor </label>
+      <input type="checkbox" name="gm" id="checkbox3">
+      <label for="checkbox3">GamaMaster </label>
+      <input type="checkbox" name="log" id="checkbox4">
+      <label for="checkbox4">Log </label>
+      <input type="checkbox" name="case" id="checkbox5">
+      <label for="checkbox5">Case</label></p>
+  </fieldset>
+  
+  <p>
+    </label><input type="submit" name="submit" id="submit" value="提交">
+  </p>
+</form>
+<p>&nbsp;</p>

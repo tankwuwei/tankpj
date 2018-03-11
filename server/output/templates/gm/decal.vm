@@ -1,0 +1,20 @@
+
+id: $id, propid: $propid, Name_PaintingDecal: $Name_PaintingDecal
+
+<br>
+<br>
+
+<fieldset>
+	<table border="0">
+		<tbody>
+			<tr>
+				<th align="left" width="600px">Sockets</th>
+			</tr>
+			<tr>
+				<td>$Sockets</td>
+			</tr>
+		</tbody>
+	</table>
+</fieldset>
+
+

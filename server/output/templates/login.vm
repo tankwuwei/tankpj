@@ -1,0 +1,27 @@
+<div>
+
+	<table align="center">
+		<tr>
+			<td height="200"><h1>God Tool System</h1></td>
+		</tr>
+		<tr>
+			<th scope="col">
+				<form name="form1" method="post" action="/login">
+					<p>
+						<label for="textfield">账号:</label> <input type="text"
+							name="account" id="textfield">
+					</p>
+					<p>
+						<label for="password"> 密码:</label> <input type="text"
+							name="password" id="password">
+					</p>
+					<p>
+						<input type="submit" name="submit" id="submit" value="提交">
+					</p>
+				</form>
+			</th>
+		</tr>
+		<tbody>
+	</table>
+
+</div>

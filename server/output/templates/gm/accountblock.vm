@@ -1,0 +1,42 @@
+
+
+<form id="form1" name="form1" method="post" action="/gmtool/blocksave">
+	<fieldset>
+		<legend>设置封停时间</legend>
+			<p>
+				<input type="radio" name="isnever" value="1" checked="checked" onclick="chk('1')" />永久封停
+			</p>
+			<p>
+				<input type="radio" name="isnever" value="0" onclick="chk('0')" />封停时间
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+				<input type="number" id="day" name="day" style="width:70px;" min="0" value="0" disabled />天&nbsp;&nbsp;
+				<input type="number" id="hour" name="hour" style="width:70px;" min="0" value="0" disabled />小时
+			</p>
+			<p align="center">
+				<input type="submit" value="  封停  " />
+			</p>
+
+			<input type="hidden" name="ids" value="$ids">
+	</fieldset>
+</form>
+
+
+
+
+
+<script type="text/javascript">
+
+
+function chk(flag){
+	if(flag=="1"){
+		document.getElementById("day").disabled="true";
+		document.getElementById("hour").disabled="true";
+	}else{
+		document.getElementById("day").disabled="";
+		document.getElementById("hour").disabled="";
+	}
+}
+
+</script>
+

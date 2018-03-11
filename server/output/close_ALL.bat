@@ -1,0 +1,5 @@
+taskkill /f /fi "windowtitle eq dbserver"
+taskkill /f /fi "windowtitle eq centerserver"
+taskkill /f /fi "windowtitle eq gameserver"
+taskkill /f /fi "windowtitle eq loginserver"
+taskkill /f /fi "windowtitle eq agent"

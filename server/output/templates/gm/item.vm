@@ -1,0 +1,220 @@
+
+<h4>playerid: $playerid, nickname: $nickname</h4>
+
+#if($!{color.size()} == 0 && $!{texture.size()} == 0 && $!{decal.size()} == 0 && $!{box.size()} == 0 && $!{gold.size()} == 0 && $!{expbox.size()} == 0)
+<hr>
+This player has none items...
+#end
+
+#if($!{color.size()} > 0)
+<fieldset>
+	<legend>DIY_PaintingColor</legend>
+	<table border="0">
+		<tbody>
+			<tr>
+				<th align="left" width="300px">id</th>
+				<th align="left" width="200px">propid</th>
+				<th align="left" width="200px">name</th>
+				<th align="left" width="250px">deadline</th>
+				<th align="left" width="200px">pos</th>
+				<th align="left" width="200px">LimitedTime</th>
+				<th align="left" width="200px">DeArchiveType</th>
+			</tr>
+			#foreach($a in $color)
+			<tr>
+				<td>$a.id</td>
+				<td>$a.propid</td>
+				<td>$a.Name</td>
+				<td>$a.deadline</td>
+				<td>$a.pos</td>
+				<td>$a.LimitedTime</td>
+				<td>$a.DeArchiveType</td>
+			</tr>
+			#end
+		</tbody>
+	</table>
+</fieldset>
+#end
+
+
+#if($!{texture.size()} > 0)
+<fieldset>
+	<legend>DIY_PaintingTexture</legend>
+	<table border="0">
+		<tbody>
+			<tr>
+				<th align="left" width="300px">id</th>
+				<th align="left" width="200px">propid</th>
+				<th align="left" width="200px">name</th>
+				<th align="left" width="250px">deadline</th>
+				<th align="left" width="200px">pos</th>
+				<th align="left" width="200px">LimitedTime</th>
+				<th align="left" width="200px">DeArchiveType</th>
+			</tr>
+			#foreach($a in $texture)
+			<tr>
+				<td>$a.id</td>
+				<td>$a.propid</td>
+				<td>$a.Name</td>
+				<td>$a.deadline</td>
+				<td>$a.pos</td>
+				<td>$a.LimitedTime</td>
+				<td>$a.DeArchiveType</td>
+			</tr>
+			#end
+		</tbody>
+	</table>
+</fieldset>
+#end
+
+
+#if($!{decal.size()} > 0)
+<fieldset>
+	<legend>DIY_PaintingDecal</legend>
+	<table border="0">
+		<tbody>
+			<tr>
+				<th align="left" width="300px">id</th>
+				<th align="left" width="200px">propid</th>
+				<th align="left" width="200px">name</th>
+				<th align="left" width="250px">deadline</th>
+				<th align="left" width="200px">pos</th>
+				<th align="left" width="200px">LimitedTime</th>
+				<th align="left" width="200px">DeArchiveType</th>
+				<th align="left" width="200px">Name_PaintingDecal</th>
+			</tr>
+			#foreach($a in $decal)
+			<tr>
+				<td>$a.id</td>
+				<td>$a.propid</td>
+				<td>$a.Name</td>
+				<td>$a.deadline</td>
+				<td>$a.pos</td>
+				<td>$a.LimitedTime</td>
+				<td>$a.DeArchiveType</td>
+				<td><a href="javascript:;" onclick="decal('$a.id', '$a.propid', '$a.Name_PaintingDecal')">$a.Name_PaintingDecal</a></td>
+			</tr>
+			#end
+		</tbody>
+	</table>
+</fieldset>
+#end
+
+
+#if($!{box.size()} > 0)
+<fieldset>
+	<legend>GameBox</legend>
+	<table border="0">
+		<tbody>
+			<tr>
+				<th align="left" width="300px">id</th>
+				<th align="left" width="200px">propid</th>
+				<th align="left" width="200px">name</th>
+				<th align="left" width="250px">deadline</th>
+				<th align="left" width="200px">pos</th>
+				<th align="left" width="200px">LimitedTime</th>
+				<th align="left" width="200px">DeArchiveType</th>
+				<th align="left" width="200px">ID_GameBox</th>
+			</tr>
+			#foreach($a in $box)
+			<tr>
+				<td>$a.id</td>
+				<td>$a.propid</td>
+				<td>$a.Name</td>
+				<td>$a.deadline</td>
+				<td>$a.pos</td>
+				<td>$a.LimitedTime</td>
+				<td>$a.DeArchiveType</td>
+				<td><a href="javascript:;" onclick="box('$a.id', '$a.propid', '$a.ID_GameBox')">$a.ID_GameBox</a></td>
+			</tr>
+			#end
+		</tbody>
+	</table>
+</fieldset>
+#end
+
+
+#if($!{gold.size()} > 0)
+<fieldset>
+	<legend>TGold</legend>
+	<table border="0">
+		<tbody>
+			<tr>
+				<th align="left" width="300px">id</th>
+				<th align="left" width="200px">propid</th>
+				<th align="left" width="200px">name</th>
+				<th align="left" width="250px">deadline</th>
+				<th align="left" width="200px">pos</th>
+				<th align="left" width="200px">LimitedTime</th>
+				<th align="left" width="200px">DeArchiveType</th>
+			</tr>
+			#foreach($a in $gold)
+			<tr>
+				<td>$a.id</td>
+				<td>$a.propid</td>
+				<td>$a.Name</td>
+				<td>$a.deadline</td>
+				<td>$a.pos</td>
+				<td>$a.LimitedTime</td>
+				<td>$a.DeArchiveType</td>
+			</tr>
+			#end
+		</tbody>
+	</table>
+</fieldset>
+#end
+
+#if($!{expbox.size()} > 0)
+<fieldset>
+	<legend>EXPBox</legend>
+	<table border="0">
+		<tbody>
+			<tr>
+				<th align="left" width="300px">id</th>
+				<th align="left" width="200px">propid</th>
+				<th align="left" width="200px">name</th>
+				<th align="left" width="250px">deadline</th>
+				<th align="left" width="200px">pos</th>
+				<th align="left" width="200px">LimitedTime</th>
+				<th align="left" width="200px">DeArchiveType</th>
+			</tr>
+			#foreach($a in $gold)
+			<tr>
+				<td>$a.id</td>
+				<td>$a.propid</td>
+				<td>$a.Name</td>
+				<td>$a.deadline</td>
+				<td>$a.pos</td>
+				<td>$a.LimitedTime</td>
+				<td>$a.DeArchiveType</td>
+			</tr>
+			#end
+		</tbody>
+	</table>
+</fieldset>
+#end
+
+
+
+
+
+<!--_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="$fileserver/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="$fileserver/lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="$fileserver/static/h-ui/js/H-ui.min.js"></script> 
+<script type="text/javascript" src="$fileserver/static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="$fileserver/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+
+
+function box(id, propid, ID_GameBox){
+	layer_show('GameBox','/gmtool/box?id='+id+'&propid='+propid+'&ID_GameBox='+ID_GameBox,'800','500');
+}
+
+function decal(id, propid, Name_PaintingDecal){
+	layer_show('DIY_PaintingDecal','/gmtool/decal?id='+id+'&propid='+propid+'&Name_PaintingDecal='+Name_PaintingDecal,'600','300');
+}
+
+</script>

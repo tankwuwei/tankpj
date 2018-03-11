@@ -1,0 +1,24 @@
+
+	<table border="0">
+		<tbody>
+			<tr>
+				<th scope="col" align="left" width="100px">No.</th>
+				<th scope="col" align="left" width="300px">nickname</th>
+				<th scope="col" align="left" width="200px">isread</th>
+				<th scope="col" align="left" width="200px">isget</th>
+				<th scope="col" align="left" width="200px">isdelete</th>
+			</tr>
+			#foreach($a in $all)
+			<tr>
+				<td>$!{velocityCount}</td>
+				<td>$a.nickname</td>
+				<td>#if($a.isread==0)未读#else已读#end</td>
+				<td>#if($a.isget==0)未领取#else已领取#end</td>
+				<td>#if($a.isdelete==0)正常#else已删除#end</td>
+			</tr>
+			#end
+		</tbody>
+	</table>
+
+
+

@@ -1,0 +1,74 @@
+
+<fieldset>
+<legend>广播消息</legend>
+
+	<form id="form1" name="form1" method="post" action="/gmtool/broadcastdeploy" onsubmit="return chkContent();">
+			<textarea name="content" rows="10" cols="120"></textarea>
+			<br>
+			<input type="submit" name="submit" id="submit" value="        发布        ">
+	</form>
+	<br>
+	<form id="form2" name="form2" method="post" action="/gmtool/broadcastcancel" onsubmit="return cancelConfirm();">
+			<input type="submit" name="submit" id="submit" value="        取消广播        ">
+	</form>
+
+</fieldset>
+
+<p>
+	<input type="button" name="start" value="        查看广播记录        " onclick="broadcast()">
+</p>
+
+
+<fieldset>
+	<legend>广播记录</legend>
+	<table border="0">
+		<tbody>
+			<tr>
+				<th scope="col" align="left" width="100px">No.</th>
+				<th scope="col" align="left" width="250px">time</th>
+				<th scope="col" align="left">content</th>
+			</tr>
+			#foreach($a in $all)
+			<tr>
+				<td>$!{velocityCount}</td>
+				<td>$a.createtime</td>
+				<td>$a.content</td>
+			</tr>
+			#end
+		</tbody>
+	</table>
+</fieldset>
+
+
+
+
+<script type="text/javascript">
+
+function chkContent(){
+	var content = form1.content.value;
+	if (content==null || content=="") {
+		alert("广播消息不能为空！");
+		return false;
+	}
+	return true;
+}
+
+function cancelConfirm(){
+	if(confirm('确认要取消广播吗？')){
+		return true;	
+	}else{
+		return false;
+	}
+}
+
+
+
+function broadcast(){
+	window.location.href='/gmtool/broadcast';
+}
+
+
+
+
+
+</script>

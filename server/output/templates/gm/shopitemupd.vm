@@ -1,0 +1,63 @@
+
+
+<form id="form1" name="form1" method="post" action="/gmtool/shopitemUpdSave" onsubmit="return chk();">
+	<fieldset>
+		<legend></legend>
+			<p>
+				propid:<input type="number" name="propid" value="$propid" style="width:150px;" min="0"  disabled="true">&nbsp;&nbsp;&nbsp;&nbsp;
+				       <input type="hidden" name="propid" value="$propid" />
+				price:<input type="number" name="price" value="$price" style="width:150px;" min="0">&nbsp;&nbsp;&nbsp;&nbsp;
+				
+			</p>
+			<p>
+				type:
+				<select id="selecttype" name="type" value="$type" style="width:150px;">
+					<option value="0">Normal</option>
+					<option value="1">New</option>
+					<option value="2">Hot</option>
+				</select>
+				&nbsp;&nbsp;&nbsp;&nbsp;
+				onsale:
+				<select id="selectonsale" name="onsale" value="$onsale" style="width:100px;">
+					<option value="0">On</option>
+					<option value="1">Off</option>
+				</select>
+			</p>
+			<p align="center">
+				<input type="submit" name="submit" id="submit" value="    保存    ">
+			</p>
+
+
+
+			
+	</fieldset>
+</form>
+
+
+
+<script type="text/javascript">
+var  v = document.getElementById('selecttype');
+
+if('0'=='$!type')
+	v[0].selected = true;
+if('1'=='$!type')
+	v[1].selected = true;
+if('2'=='$!type')
+	v[2].selected = true;
+
+var  onsale = document.getElementById('selectonsale');
+
+if('0'=='$!onsale')
+	onsale[0].selected = true;
+if('1'=='$!onsale')
+	onsale[1].selected = true;
+
+function chk(){
+	if(form1.price.value==null || form1.price.value==""){
+		alert("price is not null.");
+		return false;
+	}
+
+	return true;
+}
+</script>

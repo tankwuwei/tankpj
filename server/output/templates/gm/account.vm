@@ -1,0 +1,125 @@
+
+
+
+<h3>Account</h3>
+
+
+<form id="form1" name="form1" method="post" action="/gmtool/account">
+	<fieldset>
+		<legend>查询条件</legend>
+		<p>
+			<label for="textfield">账号id:</label> 
+				<input type="text" name="accountid" id="textfield" value="$!accountid" placeholder="精确查找">
+			<label for="textfield2">帐号名:</label>
+				<input type="text" name="account" id="textfield2" value="$!account" placeholder="模糊查找">
+			<input type="submit" name="submit" id="submit" value="查询">
+		</p>
+	</fieldset>
+</form>
+
+
+	<fieldset>
+		<legend>查询结果</legend>
+		<a href="javascript:;" onclick="block()">封账号</a>&nbsp;&nbsp;&nbsp;&nbsp; 
+		<a href="javascript:;" onclick="unblock()">解封</a> 
+		<table border="0">
+			<tbody>
+				<tr>
+					<th scope="col" align="left" width="50px"><input type="checkbox" name="allcheck" id="allcheck" onclick="allcheck()"></th>
+					<th scope="col" align="left" width="150px">账号id</th>
+					<th scope="col" align="left" width="150px">账号名</th>
+					<th scope="col" align="left" width="150px">密码</th>
+					<th scope="col" align="left" width="150px">生日</th>
+					<th scope="col" align="left" width="200px">封停时间</th>
+					<th scope="col" align="left" width="200px">创建时间</th>
+					<th scope="col" align="left" width="200px">最后登录时间</th>
+					<th scope="col" align="left" width="200px">最后登出时间</th>
+					<th scope="col" align="left" width="200px">在线时间</th>
+					<th scope="col" align="left" width="150px">最后登录serverid</th>
+				</tr>
+				#foreach($a in $all)
+				<tr>
+					<td><input type="checkbox" name="chkid" value="$a.id"></td>
+					<td>$a.id</td>
+					<td>$a.account</td>
+					<td>$a.passwd</td>
+					<td>$a.Birthday</td>
+					<td>$a.blocktime</td>
+					<td>$a.createtime</td>
+					<td>$a.lastlogintime</td>
+					<td>$a.lastlogouttime</td>
+					<td>$a.totalonlinetime</td>
+					<td>$a.lastserverid</td>
+				</tr>
+				#end
+			</tbody>
+		</table>
+	</fieldset>
+
+
+#if($all.size()>0)
+#parse("templates/paging.vm")
+#end
+
+
+<!--_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="$fileserver/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="$fileserver/lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="$fileserver/static/h-ui/js/H-ui.min.js"></script> 
+<script type="text/javascript" src="$fileserver/static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="$fileserver/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+
+
+function block(){
+	var ids=getids();
+	if(ids==""){
+		alert("请先选择账号！");
+	}else{
+		layer_show('批量封停','/gmtool/block?ids='+ids,'800','600');
+	}
+}
+
+function unblock(){
+	var ids=getids();
+	if(ids==""){
+		alert("请先选择账号！");
+	}else{
+		if(confirm('确认要解封吗？')){
+			window.location.href='/gmtool/unblock?ids='+ids;	
+		}else{
+		}
+	}
+}
+
+function allcheck(){
+	var chkid=document.getElementsByName("chkid");
+	if(document.getElementById("allcheck").checked==true){
+		for(var i=0;i<chkid.length;i++){
+			chkid[i].checked=true;
+		}
+	}else{
+		for(var i=0;i<chkid.length;i++){
+			chkid[i].checked=false;
+		}
+	}
+}
+
+function getids(){
+	var ids="";
+	var chkid = document.getElementsByName("chkid");
+	for(var i=0;i<chkid.length;i++){
+		if(chkid[i].checked){
+			ids+=chkid[i].value;
+			ids+=",";
+		}
+	}
+	if(ids!=""){
+		ids=ids.substring(0, ids.length-1);
+	}
+	return ids;
+}
+
+</script>

@@ -1,0 +1,34 @@
+
+<table class="hovertable" width="100%" >
+	<tr onmouseover="this.style.backgroundColor='#66FF66';" onmouseout="this.style.backgroundColor='#FFFFFF';">
+		<td height="30px"><a href=/kpi/onlineclients style='text-decoration:none;'>在线玩家统计</a></td>
+	</tr>
+	<tr onmouseover="this.style.backgroundColor='#66FF66';" onmouseout="this.style.backgroundColor='#FFFFFF';">
+		<td height="30px"><a href=/kpi/regclients style='text-decoration:none;'>注册玩家统计</a></td>
+	</tr>
+	<tr onmouseover="this.style.backgroundColor='#66FF66';" onmouseout="this.style.backgroundColor='#FFFFFF';">
+		<td height="30px">AAAA</td>
+	</tr>
+	<tr onmouseover="this.style.backgroundColor='#66FF66';" onmouseout="this.style.backgroundColor='#FFFFFF';">
+		<td height="30px">AAAA</td>
+	</tr>
+	<tr onmouseover="this.style.backgroundColor='#66FF66';" onmouseout="this.style.backgroundColor='#FFFFFF';">
+		<td height="30px">AAAA</td>
+	</tr>
+	<tr onmouseover="this.style.backgroundColor='#66FF66';" onmouseout="this.style.backgroundColor='#FFFFFF';">
+		<td height="30px">AAAA</td>
+	</tr>
+</table>
+
+
+
+
+<style type="text/css">
+table.hovertable {
+	font-size:12px;
+	border-width: 0px;
+}
+
+</style>
+
+

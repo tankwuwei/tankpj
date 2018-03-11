@@ -1,0 +1,120 @@
+<fieldset>
+	<legend>查询条件</legend>
+	<form name="form1" method="post" action="/log/battletimes" onsubmit="return chk();">
+		<input type="datetime-local" name="starttime" value="$starttime" />～<input type="datetime-local" name="endtime" value="$endtime" />
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		战区
+		$!selectzone
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		统计间隔
+		<select id="selecttime" name="time" value="$time" style="width:100px;">
+			<option value="15">15分钟</option>
+			<option value="30">30分钟</option>
+			<option value="60">1小时</option>
+			<option value="120">2小时</option>
+			<option value="1440">1天</option>
+			<option value="10080">1周</option>
+		</select>
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="submit" value="    查询    ">
+		<input type="hidden" name="flag" value=$flag>
+	</form>
+</fieldset>
+
+
+
+<script >
+var  v = document.getElementById('selecttime');
+if(15==$time)
+	v[0].selected = true;
+if(30==$time)
+	v[1].selected = true;
+if(60==$time)
+	v[2].selected = true;
+if(120==$time)
+	v[3].selected = true;
+if(1440==$time)
+	v[4].selected = true;
+if(10080==$time)
+	v[5].selected = true;
+
+
+
+
+function chk(){
+	if(form1.starttime.value==null || form1.starttime.value==""){
+		alert("请输入开始时间！");
+		return false;
+	}
+
+	if(form1.endtime.value==null || form1.endtime.value==""){
+		alert("请输入结束时间！");
+		return false;
+	}
+
+	if(form1.starttime.value > form1.endtime.value){
+		alert("开始时间应该小于结束时间！");
+		return false;
+	}
+
+	return true;
+}
+
+
+</script>
+
+
+
+#if($flag==1)
+
+	<div id="container" style="min-width:700px;height:500px"></div>
+
+
+<!--_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="$fileserver/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="$fileserver/lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="$fileserver/static/h-ui/js/H-ui.min.js"></script> 
+<script type="text/javascript" src="$fileserver/static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="$fileserver/lib/hcharts/Highcharts/5.0.6/js/highcharts.js"></script>
+<script type="text/javascript" src="$fileserver/lib/hcharts/Highcharts/5.0.6/js/modules/exporting.js"></script>
+<script type="text/javascript">
+$(function () {
+    $('#container').highcharts({
+        chart: {
+            type: 'area'
+        },
+        title: {
+            text: '战斗次数统计'
+        },
+        subtitle: {
+            text: '战斗次数统计'
+        },
+        xAxis: {
+            categories: $datax
+        },
+        yAxis: {
+            title: {
+                text: '战斗次数'
+            },
+            labels: {
+                formatter: function() {
+                    return this.value;
+                }
+            }
+        },
+        tooltip: {
+            pointFormat: '{series.name}<br>{point.y}'
+        },
+
+        series: $datay
+    });
+});
+
+
+</script>
+
+
+
+#end 

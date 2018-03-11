@@ -1,0 +1,123 @@
+
+<fieldset>
+<legend>发送道具</legend>
+
+	<form id="form1" name="form1" method="post" action="/gmtool/emailsend" onsubmit="return check();">
+			<br>
+
+			<input type='text' id="nickname" name="nickname" size="200" placeholder="玩家昵称 以,分割" style="background-color: #CCFFCC" />
+
+			<br><br>
+
+			<input type='text' name="mailtitle" size="100" placeholder="邮件标题"/>
+			<br>
+			<textarea name="mailcontent" rows="12" cols="150" placeholder="邮件内容"></textarea>
+			<br>
+
+			<table>
+			<tr>
+				<td><input type='number' name="propid1" min="0" size="10" placeholder="道具ID"/></td>
+				<td><input type='number' name="num1" min="0" size="10" placeholder="数量"/></td>
+			</tr>
+			<tr>
+				<td><input type='number' name="propid2" min="0" size="10" placeholder="道具ID"/></td>
+				<td><input type='number' name="num2" min="0" size="10" placeholder="数量"/></td>
+			</tr>
+			<tr>
+				<td><input type='number' name="propid3" min="0" size="10" placeholder="道具ID"/></td>
+				<td><input type='number' name="num3" min="0" size="10" placeholder="数量"/></td>
+			</tr>
+			<tr>
+				<td><input type='number' name="propid4" min="0" size="10" placeholder="道具ID"/></td>
+				<td><input type='number' name="num4" min="0" size="10" placeholder="数量"/></td>
+			</tr>
+			<tr>
+				<td><input type='number' name="propid5" min="0" size="10" placeholder="道具ID"/></td>
+				<td><input type='number' name="num5" min="0" size="10" placeholder="数量"/></td>
+			</tr>
+			</table>
+
+
+			<hr><br><br>
+
+			<input type="submit" name="emailsend" value="        发放道具        ">
+	</form>
+
+
+</fieldset>
+
+
+
+
+<script type="text/javascript">
+
+function chk(){
+	var nickname = form1.nickname.value.trim();
+	if (nickname==null || nickname=="") {
+		alert("【玩家昵称】不能为空！");
+		return false;
+	}
+
+	var mailtitle = form1.mailtitle.value.trim();
+	if (mailtitle==null || mailtitle=="") {
+		alert("【邮件标题】不能为空！");
+		return false;
+	}
+
+	var mailcontent = form1.mailcontent.value.trim();
+	if (mailcontent==null || mailcontent=="") {
+		alert("【邮件内容】不能为空！");
+		return false;
+	}
+
+
+	if(!chkprop(form1.propid1.value.trim(), form1.num1.value.trim(), 1))
+		return false;
+	if(!chkprop(form1.propid2.value.trim(), form1.num2.value.trim(), 2))
+		return false;
+	if(!chkprop(form1.propid3.value.trim(), form1.num3.value.trim(), 3))
+		return false;
+	if(!chkprop(form1.propid4.value.trim(), form1.num4.value.trim(), 4))
+		return false;
+	if(!chkprop(form1.propid5.value.trim(), form1.num5.value.trim(), 5))
+		return false;
+
+
+	return true;
+}
+
+function chkprop(propid, num, i){
+	if (!(propid==null || propid=="")) {
+		if (num==null || num=="") {
+			alert("【数量"+i+"】不能为空！");
+			return false;
+		}
+		if (num==0) {
+			alert("【数量"+i+"】不能为零！");
+			return false;
+		}
+	}
+	return true;
+}
+
+
+
+
+function check(){
+	if(!chk()){
+		return false;
+	}
+
+	if(confirm('确认要【发放道具】吗？')){
+		alert("发放道具成功！");
+		return true;
+	} else {
+		return false;
+	}
+}
+
+
+
+
+
+</script>

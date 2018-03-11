@@ -1,0 +1,56 @@
+
+
+<p>
+	<input type="button" name="start" value="        刷新        " onclick="refresh()">
+</p>
+
+
+<fieldset>
+	<legend>E-Mail</legend>
+	<table border="0">
+		<tbody>
+			<tr>
+				<th scope="col" align="left" width="100px">No.</th>
+				<th scope="col" align="left" width="200px">createtime</th>
+				<th scope="col" align="left" width="250px">propid</th>
+				<th scope="col" align="left" width="250px">num</th>
+				<th scope="col" align="left" width="400px">mailtitle</th>
+				<th scope="col" align="left">mailcontent</th>
+			</tr>
+			#foreach($a in $all)
+			<tr>
+				<td>$!{velocityCount}</td>
+				<td><a href="javascript:;" onclick="detail('$a.createtime')">$a.createtimeStr</a></td>
+				<td>$a.propid</td>
+				<td>$a.num</td>
+				<td>$a.mailtitle</td>
+				<td>$a.mailcontent</td>
+			</tr>
+			#end
+		</tbody>
+	</table>
+</fieldset>
+
+
+
+<!--_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="$fileserver/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="$fileserver/lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="$fileserver/static/h-ui/js/H-ui.min.js"></script> 
+<script type="text/javascript" src="$fileserver/static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="$fileserver/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+
+function refresh(){
+	window.location.href='/gmtool/emaillog';
+}
+
+
+function detail(createtime){
+	layer_show('玩家邮件信息','/gmtool/emaillogdetail?createtime='+createtime,'1300','600');
+}
+
+
+</script>

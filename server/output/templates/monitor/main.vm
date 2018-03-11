@@ -1,0 +1,34 @@
+
+<table class="hovertable" width="100%" >
+	<tr onmouseover="this.style.backgroundColor='#66FF66';" onmouseout="this.style.backgroundColor='#FFFFFF';">
+		<td height="30px"><a href=/monitor/agent style='text-decoration:none;'>Agent监控</a></td>
+	</tr>
+	<tr onmouseover="this.style.backgroundColor='#66FF66';" onmouseout="this.style.backgroundColor='#FFFFFF';">
+		<td height="30px"><a href=/monitor/gameserver style='text-decoration:none;'>GameServer重启</a></td>
+	</tr>
+	<tr onmouseover="this.style.backgroundColor='#66FF66';" onmouseout="this.style.backgroundColor='#FFFFFF';">
+		<td height="30px">AAAA</td>
+	</tr>
+	<tr onmouseover="this.style.backgroundColor='#66FF66';" onmouseout="this.style.backgroundColor='#FFFFFF';">
+		<td height="30px">AAAA</td>
+	</tr>
+	<tr onmouseover="this.style.backgroundColor='#66FF66';" onmouseout="this.style.backgroundColor='#FFFFFF';">
+		<td height="30px">AAAA</td>
+	</tr>
+	<tr onmouseover="this.style.backgroundColor='#66FF66';" onmouseout="this.style.backgroundColor='#FFFFFF';">
+		<td height="30px">AAAA</td>
+	</tr>
+</table>
+
+
+
+
+<style type="text/css">
+table.hovertable {
+	font-size:12px;
+	border-width: 0px;
+}
+
+</style>
+
+

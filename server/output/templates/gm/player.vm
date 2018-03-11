@@ -1,0 +1,88 @@
+
+
+
+<h3>Player</h3>
+
+
+<form id="form1" name="form1" method="post" action="/gmtool/player">
+	<fieldset>
+		<legend>查询条件</legend>
+		<p>
+			<label for="textfield">playerid:</label> 
+				<input type="text" name="playerid" id="textfield" value="$!playerid" placeholder="精确查找">
+			<label for="textfield2">accountid:</label> 
+				<input type="text" name="accountid" id="textfield2" value="$!accountid" placeholder="精确查找">
+			<label for="textfield3">nickname:</label>
+				<input type="text" name="nickname" id="textfield3" value="$!nickname" placeholder="模糊查找">
+			<input type="submit" name="submit" id="submit" value="  查询  ">
+		</p>
+	</fieldset>
+</form>
+
+
+	<fieldset>
+		<legend>查询结果</legend>
+		<table border="0" width="100%">
+			<tbody>
+				<tr>
+					<th align="left" width="10%">playerid（战斗数据）</th>
+					<th align="left" width="10%">accountid</th>
+					<th align="left" width="10%">nickname（道具）</th>
+					<th align="left" width="5%">level</th>
+					<th align="left" width="5%">exp</th>
+					<th align="left" width="10%">money</th>
+					<th align="left" width="5%">gold</th>
+					<th align="left" width="10%">createTime</th>
+					<th align="left" width="10%">lastLoginTime</th>
+					<th align="left" width="10%">lastLogoutTime</th>
+					<th align="left" width="5%">allfightsecs(Min)</th>
+					<th align="left" width="5%">givetimes</th>
+					<th align="left" width="15%">fightserver</th>
+				</tr>
+				#foreach($a in $all)
+				<tr>
+					<td><a href="javascript:;" onclick="fightdata('$a.playerid', '$a.nickname')">$a.playerid</a></td>
+					<td>$a.accountid</td>
+					<td><a href="/gmtool/item?playerid=$a.playerid&nickname=$a.nickname">$a.nickname</a></td>
+					<td>$a.level</td>
+					<td>$a.exp</td>
+					<td>$a.money</td>
+					<td>$a.gold</td>
+					<td>$a.createTime</td>
+					<td>$a.lastLoginTime</td>
+					<td>$a.lastLogoutTime</td>
+					<td>$a.allfightsecs</td>
+					<td>$a.givetimes</td>
+					<td>$a.fightserver</td>
+				</tr>
+				#end
+			</tbody>
+		</table>
+	</fieldset>
+
+
+#if($all.size()>0)
+#parse("templates/paging.vm")
+#end
+
+
+
+
+
+<!--_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="$fileserver/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="$fileserver/lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="$fileserver/static/h-ui/js/H-ui.min.js"></script> 
+<script type="text/javascript" src="$fileserver/static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="$fileserver/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+
+
+function fightdata(playerid, nickname){
+	layer_show('战斗数据','/gmtool/fightdata?playerid='+playerid+'&nickname='+nickname,'700','600');
+}
+
+
+</script>

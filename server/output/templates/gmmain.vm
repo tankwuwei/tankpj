@@ -1,0 +1,67 @@
+<h2>Game Master</h2>
+#if($accountinfo.case)
+<fieldset>
+	<fieldset>
+		<legend>未解决case</legend>
+		<table width="600" border="1" cellpadding="0">
+			<tbody>
+				<tr>
+					<th scope="col">编号</th>
+					<th scope="col">玩家账号</th>
+					<th scope="col">角色名字</th>
+					<th scope="col">标题</th>
+					<th scope="col">创建时间</th>
+					<th scope="col">状态</th>
+				</tr>
+				#foreach($case in $all)
+				<tr>
+					<th scope="row"><a href=d?id=$case.id> $case.id </a></th>
+					<td>$case.account</td>
+					<td>$case.rolename</td>
+					<td>$case.title</td>
+					<td>$case.createtime</td>
+					<td>$case.processgm</td>
+				</tr>
+				#end
+			</tbody>
+		</table>
+	</fieldset>
+	<p>
+		<a href="create">新建case</a>
+	</p>
+	<form id="form1" name="form1" method="post">
+		<fieldset>
+			<legend>Case查询</legend>
+			<p>
+				<label for="textfield5">case编号:</label> <input type="text"
+					name="textfield5" id="textfield5"> <label for="textfield6">关键字:</label>
+				<input type="text" name="textfield6" id="textfield6"> <label
+					for="textfield2">帐号名:</label> <input type="text" name="account"
+					id="textfield2"> <label for="textfield3">角色名:</label> <input
+					type="text" name="rolename" id="textfield4"> <input
+					type="submit" name="submit" id="submit" value="查询">
+			</p>
+		</fieldset>
+	</form>
+</fieldset>
+#end #if($accountinfo.gm)
+<form id="form1" name="form1" method="post">
+	<fieldset>
+		<legend>玩家数据查询</legend>
+		<p>
+			<label for="textfield">账号id:</label> <input type="text"
+				name="accountid" id="textfield"> <label for="textfield2">帐号名:</label>
+			<input type="text" name="account" id="textfield2"> <label
+				for="textfield3">角色id:</label> <input type="text" name="roleid"
+				id="textfield3"> <label for="textfield3">角色名:</label> <input
+				type="text" name="rolename" id="textfield4"> <input
+				type="submit" name="submit" id="submit" value="查询">
+		</p>
+	</fieldset>
+</form>
+#end #if($accountinfo.log)
+<fieldset>
+	<legend>Log查询</legend>
+</fieldset>
+#end
+

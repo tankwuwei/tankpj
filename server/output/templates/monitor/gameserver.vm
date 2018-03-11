@@ -1,0 +1,54 @@
+
+#if($isopen)
+<h4><font color="red">GameServer 已启动</font>【IP：$ip】</h4>
+#else
+<h4><font color="red">GameServer 已关闭</font></h4>
+#end
+
+<hr>
+
+<p>
+	<input type="button" name="start" value="        检查GameServer状态        " onclick="chk()">
+	&nbsp;&nbsp;&nbsp;&nbsp;
+	#if($countdown>0)<font size="1" color="red">※已发送关闭命令，还剩$countdown秒</font>#end
+</p>
+
+
+
+<p>
+	<input type="button" value="        关闭        " #if(!$isopen || $countdown>0)disabled="disabled"#end onclick="close1()" id="close1">
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<input type="number" id="time" name="time" value="30" style="width:70px;" min="30">分钟
+	&nbsp;&nbsp;&nbsp;&nbsp;
+	<font size="1" color="red">※先踢掉在线玩家，然后关闭</font>
+</p>
+
+
+
+<p>
+	<input type="button" value="        启动        " #if($isopen)disabled="disabled"#end onclick="start()">
+</p>
+
+
+
+
+<script>
+function chk(){
+	window.location.href='/monitor/gameserver';	
+}
+
+function start(){
+	window.location.href='/monitor/gameserver/start';	
+}
+
+function close1(){
+	var time = document.getElementById("time").value;
+	var msg = time==0?'确认要【立刻】关闭吗':'确认要【'+time+'】分钟之后关闭吗？';
+	if(confirm(msg)){
+		window.location.href='/monitor/gameserver/close?time='+time;
+		document.getElementById("close1").disabled="disabled";
+	}
+
+}
+
+</script>

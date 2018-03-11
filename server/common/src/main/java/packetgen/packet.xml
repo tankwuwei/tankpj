@@ -1,0 +1,1288 @@
+
+<!-- reserved field names:_length,code,buf -->
+<!-- client to server packet: type 0 -->
+<!-- server to client packet: type 1 -->
+<!-- ref means value type,not packet(no id) -->
+<!-- id start from 500 -->
+<!-- type : 0 client,1 server,-1 only c# code -->
+
+<packets package="generated.cgame.packets">
+	<!-- ################### 客户端与服务器系统间的消息 ###################### -->
+
+	<!-- 微信充值消息 -->
+	<packet id="402" name="CLogin" type="0" des="登录">
+		<field name="appid" type="String" des="应用编号" />
+		<field name="uid" type="String" des="特征编号" />
+		<field name="version" type="String" des="版本号" />
+		<field name="time" type="int" des="时间戳" />
+		<field name="encrpt" type="String" des="加密串" />
+	</packet>
+	<packet id="403" name="LoginRet" type="1" des="登录结果">
+		<fieid name="ret" type="short" des='结果 0成功' />
+	</packet>
+
+	<packet id="404" name="Charge" type="1" des="充值通知">
+		<field name="sn" type="string" des="流水号" />
+		<field name="itme" type="int" des="不知" />
+		<field name="rmb" type="string" des="充值金额" />
+	</packet>
+
+	<packet id="405" name="ChargeRet" type="0" des="充值处理结果">
+		<field name="sn" type="string" des="流水号" />
+		<fieid name="errorcode" type="short" des="处理结果 .0为成功" />
+	</packet>
+
+	<packet id="406" name="ShouldReadyInfo" type="1" des="是否需要设置玩家信息">
+		<field name="bsetnick" type="int" des="1要设置昵称" />
+	</packet>
+
+	<packet id="407" name="SetNickName" type="0" des="创建昵称">
+		<field name="nickname" type="string" des="昵称" />
+	</packet>
+
+	<packet id="408" name="SetNickNameRet" type="1" des="创建昵称">
+		<field name="ret" type="int" des="结果0成功" />
+	</packet>
+
+
+
+	<packet id="500" name="GameSvrRegistLoginSvr" type="0"
+		des="gamesvr注册到 loginsvr">
+		<field name="zoneid" type="int" des="区号" />
+		<field name="ip" type="string" des="ip" />
+		<field name="port" type="int" des="port" />
+		<field name="svrname" type="string" des="服务器名" />
+	</packet>
+
+
+
+	<packet id="501" name="ClientRegistLoginSvr" type="0"
+		des="client 注册到  loginsvr">
+	</packet>
+
+	<packet id="502" name="RequestLoginSvr" type="0"
+		des="client 请求  loginsvr 发送ip和port">
+	</packet>
+
+	<packet id="503" name="RequestLoginSvrRet" type="1"
+		des="loginsvr 发送到 client ip port">
+		<field name="retcode" type="int" des="返回值" />
+		<field name="gamesvrs" type="refArray" refType="RequestLoginSvrInfo"
+			des="" />
+	</packet>
+
+	<packet id="504" name="CSteamLogin" type="0" des="steam登录 返回值 LoginRet">
+		<field name="ticket" type="String" des="steam的票据 client获得的" />
+		<field name="steamid" type="long" des="客户端的steamid" />
+		<field name="version" type="String" des="版本号" />
+		<field name="encrpt" type="String" des="加密串" />
+	</packet>
+
+	<!-- 两个虚拟消息 -->
+	<packet id="1024" name="VMsgConnect" type="1" />
+	<packet id="1025" name="VMsgDisconnect" type="1" />
+	<packet id="1026" name="VMsgConnectError" type="1" />
+
+	<!-- 登录流程 -->
+	<packet id="5300" name="CSLogin" type="0" des="登录">
+		<field name="account" type="String" des="user" />
+		<fieid name="password" type="String" des="password" />
+		<fieid name="version" type="String" des="version" />
+		<field name="time" type="int" des="时间戳" />
+		<field name="encrpt" type="String" des="加密串" />
+	</packet>
+	<packet id="5301" name="SCLoginRet" type="1" des="登录结果">
+		<field name="account" type="String" des="账号" />
+		<fieid name="ret" type="short"
+			des='结果 
+		0.成功,257无此账号，268密码错误,259账号被封停,260版本号不匹配,261验证错误' />
+	</packet>
+	<packet id="5302" name="CSPing" type="0" />
+	<packet id="5303" name="SCPong" type="1" />
+	<packet id="5304" name="SCKickOut" type="1" />
+	<packet id="5305" name="SCCheatKickOut" type="1" des="作弊被踢" />
+
+	<packet id="5310" name="CSlientReady" type="0" des="客户端准备完成">
+	</packet>
+
+	<packet id="5311" name="SCPlayerLoginData" type="1" des="推送玩家数据">
+		<field name="roleid" type="long" des="角色ID" />
+		<field name="rolename" type="String" des="角色名字" />
+		<field name="level" type="int" des="等级" />
+		<field name="Exp" type="int" des="经验值" />
+		<field name="money" type="int" des="money" />
+		<field name="ingot" type="int" des="元宝数量" />
+		<field name="teamid" type="long" des="team id"/>
+	</packet>
+
+	<packet id="5312" name="SCPlayerBaseData" type="1" des="推送玩家基本信息">
+		<field name="level" type="int" des="等级" />
+		<field name="Exp" type="int" des="经验值" />
+		<field name="money" type="int" des="money" />
+		<field name="ingot" type="int" des="元宝数量" />
+		<field name="teamid" type="long" des="team id"/>
+		<field name="givetimesPrice" type="int" des="下次赠送需要的钱" />
+		<field name="boxid" type="int" />
+	</packet>
+
+	<packet id="5313" name="SCPlayerData" type="1"
+		des="推送玩家数据。吃鸡模式不用，只是为了防止客户端的编译错误">
+		<field name="roleid" type="long" des="角色ID" />
+		<field name="rolename" type="String" des="角色名字" />
+		<field name="level" type="short" des="等级" />
+		<field name="Exp" type="int" des="经验值" />
+		<field name="money" type="int" des="money" />
+		<field name="ingot" type="int" des="元宝数量" />
+		<field name="techPoints" type="int" des="天赋点" />
+		<field name="developPoints" type="int" des="公共研发点" />
+		<field name="fightcounts" type="int" des="天赋点" />
+		<field name="wincount" type="int" des="天赋点" />
+		<field name="killcount" type="int" des="天赋点" />
+		<field name="deadcount" type="int" des="天赋点" />
+		<field name="assistcount" type="int" des="天赋点" />
+
+		<field name="bulletids" type="int[]" des="弹药库id" />
+		<field name="bulletbuytype" type="int[]" des="弹药库购买类型" />
+		<field name="bulletcounts" type="int[]" des="弹药库counts" />
+
+		<field name="itemids" type="int[]" des="道具id" />
+		<field name="itembuytype" type="int[]" des="道具购买类型" />
+		<field name="itemcounts" type="int[]" des="道具counts" />
+		<field name="allfightsecs" type="int" des="所有战斗秒数" />
+
+	</packet>
+	<packet id="5322" name="SCFinishLevel" type="1" des="finishlevel">
+		<field name="finishs" type="refArray" refType="FinishLevelinfo" />
+	</packet>
+
+	<packet id="5323" name="SCTankModel" type="1" des="tankmodel">
+		<field name="tankmodels" type="refArray" refType="TankModelinfo" />
+	</packet>
+
+	<packet id="5324" name="SCTechnologies" type="1" des="天赋信息">
+		<field name="technologies" type="refArray" refType="TechnologyInfo" />
+	</packet>
+
+	<packet id="5325" name="CSUseTank" type="0" des="请求更改当前使用的tank">
+		<field name="tankid" type="int" />
+	</packet>
+
+	<packet id="5326" name="ScUseTankRet" type="1" des="请求更改当前使用的tank ret">
+		<field name="ret" type="int" />
+		<field name="tankid" type="int" />
+	</packet>
+
+	<packet id="5330" name="CSSaveKeyboard" type="0" des="请求更改当前使用的tank ret">
+
+	</packet>
+
+
+
+	<packet id="5333" name="SCTankParts" type="1" des="tank部件信息">
+		<field name="tankparts" type="refArray" refType="TankPartInfo" />
+	</packet>
+
+
+	<packet id="5340" name="CSGetPVPData" type="0" des="请求pvp统计信息" />
+	<packet id="5341" name="SCPVPData" type="1">
+		<field name="allcount" type="int" des="总场次" />
+		<field name="wincount" type="int" des="胜利场次" />
+		<field name="fullwincount" type="int" des="全积分胜利场次" />
+		<field name="score" type="int" des="pvp积分" />
+		<field name="topscore" type="int" des="pvp最高积分" />
+		<field name="cardusecount" type="refArray" refType="ItemInfo"
+			des="卡牌使用次数" />
+	</packet>
+	<packet id="5342" name="CSGetRankList" type="0" des="请求排行榜列表">
+		<field name="type" type="short" des="排行榜类型，1天梯榜" />
+	</packet>
+	<packet id="5343" name="SCRankList" type="1" des="排行榜列表">
+		<field name="type" type="short" des="排行榜类型，1天梯榜" />
+		<field name="rank" type="int" des="自己的排名" />
+		<field name="value" type="int" des="自己的分数" />
+		<field name="list" type="refArray" refType="RankInfo" />
+	</packet>
+
+	<packet id="5350" name="CSGetShopList" type="0" des="商品列表" />
+
+	<packet id="5351" name="SCShopList" type="1" des="商品列表">
+		<field name="items" type="refArray" refType="ItemInfo" des="商品列表" />
+		<field name="refreshtime" type="int" des="下次刷新时间" />
+	</packet>
+	<packet id="5352" name="CSBuyItem" type="0" des="购买xx物品">
+		<field name="id" type="int" />
+	</packet>
+	<packet id="5353" name="SCBuyItem" type="1" des="购买结果">
+		<field name="id" type="int" />
+		<field name="ret" type="short" des="0成功 339没钱 345没元宝" />
+		<field name="items" type="refArray" refType="ItemInfo" des="获取的物品列表" />
+	</packet>
+
+	<packet id="5400" name="CSStartPVE" type="0" des="开始进行pve战斗">
+		<fieid name="mapid" type="int" />
+		<fieid name="commander" type="int" />
+	</packet>
+	<packet id="5401" name="SCStartPVE" type="1">
+		<fieid name="ret" type="short" des="0成功 339缺少金钱 514战斗中" />
+		<fieid name="commander" type="int" />
+	</packet>
+	<packet id="5402" name="CSEndPVE" type="0" des="pve战斗结束">
+		<field name="ret" type="short" des="1胜 2负 3平" />
+	</packet>
+	<packet id="5403" name="SCEndPVE" type="1">
+		<field name="reward" type="refArray" refType="ItemInfo" />
+	</packet>
+	<packet id="5404" name="SCMaps" type="1" des="推送通过的关卡编号">
+		<field name="mapid" type="int[]" />
+	</packet>
+
+	<packet id="5500" name="CSRequireIntoMap" type="0" des="请求进入地图">
+		<field name="mapid" type="int" des="地图id" />
+		<field name="commander" type="int" des="指挥官id" />
+	</packet>
+	<packet id="5501" name="SCRequireMapRet" type="1" des="请求地图返回">
+		<fieid name="ret" type="short" des='结果， 0成功 514排队中战斗中' />
+	</packet>
+	<packet id="5502" name="SCEnterMap" type="1" des="通知玩家进入地图">
+		<field name="mapid" type="int" des="mapid" />
+		<field name="index" type="int" des="index" />
+		<fieid name="commander" type="int" />
+	</packet>
+	<packet id="5503" name="CSEnterMap" type="0" des="玩家进入地图">
+		<field name="mapid" type="int" des="mapid" />
+	</packet>
+	<packet id="5504" name="SCBattleStart" type="1" des="通知战斗开始">
+		<field name="seconds" type="int" des="x秒之后开始战斗" />
+	</packet>
+	<packet id="5505" name="SCBattleFinish" type="1" des="通知战斗结束">
+		<field name="win" type="short" des=" 1胜 2负 3平" />
+		<field name="score" type="int" des="对手得分" />
+		<field name="reward" type="refArray" refType="ItemInfo" />
+	</packet>
+	<packet id="5506" name="CSLeaveMap" type="0" des="玩家退出战斗">
+	</packet>
+
+
+	<packet id="5508" name="CSCancelEnterMap" type="0" des="请求取消匹配">
+	</packet>
+	<packet id="5509" name="CSCancelRet" type="1" des="取消结果">
+		<field name="ret" type="short" des="结果 0.成功 515不在队列中" />
+	</packet>
+
+
+	<packet id="5538" name="RequestSaleTankModel" type="0" des="请求卖掉坦克">
+		<field name="modelid" type="int" />
+	</packet>
+
+	<packet id="5539" name="RequestSaleTankModelRet" type="1"
+		des="请求卖掉坦克返回值">
+		<field name="modelid" type="int" />
+		<field name="retcode" type="int" />
+	</packet>
+
+	<packet id="5540" name="RequestBuySaleTankModel" type="0" des="请求回购坦克">
+		<field name="modelid" type="int" />
+	</packet>
+
+	<packet id="5541" name="RequestBuySaleTankModelRet" type="1"
+		des="请求回购返回值">
+		<field name="modelid" type="int" />
+		<field name="retcode" type="int" />
+	</packet>
+
+	<packet id="5542" name="RequestUnlockTech" type="0" des="请求解锁科技树">
+		<field name="techIds" type="int[]" />
+	</packet>
+
+
+	<packet id="5543" name="RequestDevelopTankModel" type="0"
+		des="请求购买坦克 添加坦克">
+		<field name="modelid" type="int" />
+	</packet>
+
+	<packet id="5544" name="RequestDevelopTankModelRet" type="1"
+		des="请求购买坦克 添加坦克 返回值">
+		<field name="modelid" type="int" />
+		<field name="ret" type="int" />
+	</packet>
+
+	<packet id="5546" name="CSRequestAddTankSpace" type="0" des="请求添加车位">
+	</packet>
+
+	<packet id="5547" name="SCRequestAddTankSpaceRet" type="1"
+		des="请求添加车位 ret">
+		<field name="ret" type="int" />
+	</packet>
+
+	<packet id="5548" name="CSRequestDevelopTankPart" type="0"
+		des="请求添加坦克部件">
+		<field name="tankid" type="int" />
+		<field name="partid" type="int" />
+	</packet>
+
+	<packet id="5549" name="SCRequestDevelopTankPartRet" type="1"
+		des="请求添加坦克部件 ret">
+		<field name="tankid" type="int" />
+		<field name="partid" type="int" />
+		<field name="ret" type="int" />
+	</packet>
+
+	<packet id="5550" name="CSRequestBuyTankPart" type="0"
+		des="请求解锁tank部件返回值">
+		<field name="tankid" type="int" />
+		<field name="partid" type="int" />
+	</packet>
+
+
+	<packet id="5551" name="SCRequestBuyTankPartRet" type="1"
+		des="请求解锁tank部件返回值">
+		<field name="tankid" type="int" />
+		<field name="partid" type="int" />
+		<field name="ret" type="int" />
+	</packet>
+
+	<packet id="5552" name="CSRequestBuyTank" type="0" des="请求解锁tank返回值">
+		<field name="tankid" type="int" />
+	</packet>
+
+
+	<packet id="5553" name="SCRequestBuyTankRet" type="1" des="请求解锁tank返回值">
+		<field name="tankid" type="int" />
+		<field name="ret" type="int" />
+	</packet>
+
+	<packet id="5554" name="CSRequestStartMatch" type="0" des="请求开始匹配">
+		<field name="matchtype" type="short" des="0:Solo; 1:Squad"/>
+		<field name="zoneid" type="int" />
+	</packet>
+
+	<packet id="5555" name="SCRequestStartMatchRet" type="1" des="请求开始匹配返回值">
+		<field name="ret" type="int" />
+		<field name="locksecs" type="int" />
+	</packet>
+
+	<packet id="5556" name="CSRequestCancelMatch" type="0" des="请求取消匹配">
+	</packet>
+
+	<packet id="5557" name="SCRequestCancelMatchRet" type="1"
+		des="请求取消匹配返回值">
+		<field name="ret" type="int" />
+	</packet>
+
+	<packet id="5558" name="SCTankMemberInfo" type="1" des="tank成员信息">
+		<field name="tankmembers" type="refArray" refType="TankMemberInfo" />
+	</packet>
+
+	<packet id="5559" name="CSChangeTankMember" type="0" des="请求切换tank成员">
+		<field name="tankid" type="int" />
+		<field name="memberid" type="int" />
+		<field name="memberindex" type="int" des="5个成员的0-4位置" />
+	</packet>
+
+	<packet id="5560" name="SCChangeTankMemberRet" type="1"
+		des="请求切换tank成员 ret">
+		<field name="ret" type="int" />
+		<field name="tankid" type="int" />
+		<field name="memberid" type="int" />
+		<field name="memberindex" type="int" des="5个成员的0-4位置" />
+	</packet>
+
+
+	<packet id="5561" name="SCSendFightLoadingInfo" type="1" des="发送玩家战斗信息">
+		<field name="fightnumber" type="int" des="战斗服务器关卡id" />
+		<field name="rolesinfo" type="refArray" refType="FightLoadingRef" />
+	</packet>
+
+
+	<packet id="5562" name="SCFightRankInfo" type="1" des="战斗排名返回">
+		<field name="info" type="ref" refType="FightRankInfo" />
+	</packet>
+
+	<packet id="5563" name="CSRequestPlayerRankInfo" type="0" des="请求玩家排行">
+		<field name="flag" type="byte" des="0:吃鸡;1:K/D;2:TOP5" />
+	</packet>
+
+	<packet id="5564" name="SCPlayerRankInfo" type="1" des="玩家排行返回">
+		<field name="flag" type="byte" des="0:吃鸡;1:K/D;2:TOP5;3:Level" />
+		<field name="info" type="refArray" refType="PlayerRankInfo" />
+	</packet>
+
+	<packet id="5566" name="SCPlayerFightData" type="1" des="玩家战斗数据返回">
+		<field name="info" type="ref" refType="PlayerFightData" />
+	</packet>
+
+	<packet id="6000" name="CSGetFighterList" type="0" des="获取战斗服务器列表" />
+	<packet id="6001" name="SCFighterList" type="1" des="战斗服务器列表">
+		<field name="fighters" type="refArray" refType="FighterInfo" />
+	</packet>
+	<packet id="6002" name="CSEnterFighter" type="0" des="请求进入战斗服务器">
+		<field name="id" type="int" />
+	</packet>
+	<packet id="6003" name="SCEnterFighter" type="1" des="">
+		<field name="ip" type="string" />
+		<field name="port" type="short" />
+		<field name="token" type="string" />
+	</packet>
+
+	<packet id="6004" name="CSRequestFightResult" type="0" des="客户端请求收益情况">
+		<field name="roomid" type="long" />
+	</packet>
+
+	<packet id="6005" name="SCRequestFightResultRet" type="1" des="">
+		<field name="roomid" type="long" />
+		<field name="roleResults" type="refArray" refType="RoleFightResult" />
+	</packet>
+
+	<packet id="6006" name="CSChangeTankPart" type="0" des="请求更换部件">
+		<field name="tankid" type="int" />
+		<field name="partid" type="int" />
+		<field name="index" type="int" des="diy部件 0 1 2" />
+	</packet>
+
+	<packet id="6007" name="CSChangeTankPartRet" type="1" des="请求更换部件ret">
+		<field name="tankid" type="int" />
+		<field name="partid" type="int" />
+		<field name="index" type="int" des="diy部件 0 1 2" />
+		<filed name="ret" type="int" />
+	</packet>
+
+
+	<packet id="6008" name="CSAddBullet" type="0" des="请求添加弹药库">
+		<field name="bulletid" type="int" />
+		<field name="addbulletCounts" type="int" />
+		<field name="buytype" type="int" des="用户选择购买的货币类型 0银币 1金币" />
+	</packet>
+
+	<packet id="6009" name="ScAddBulletRet" type="1" des="请求添加弹药库 ret">
+		<field name="ret" type="int" />
+		<field name="bulletid" type="int" />
+		<field name="allbulletCounts" type="int" />
+	</packet>
+
+	<packet id="6010" name="CSTankBulletConfig" type="0" des="请求配置tank 部件弹药">
+		<field name="tankid" type="int" />
+		<field name="bulletid" type="int" des="弹药id" />
+		<field name="bulletType" type="int" des="哪个槽位使用" />
+		<field name="bulletCounts" type="int" des="想改变成多少个 注意不是差值 是最后值" />
+	</packet>
+
+	<packet id="6011" name="CSTankBulletConfigRet" type="1"
+		des="请求配置tank 部件弹药 ret">
+		<field name="ret" type="int" />
+		<field name="tankid" type="int" />
+		<field name="bulletid" type="int" des="弹药id" />
+		<field name="bulletType" type="int" des="哪个槽位使用" />
+		<field name="allbulletCounts" type="int" des="一共还剩多少个" />
+	</packet>
+
+
+	<packet id="6012" name="CSTankBulletBakConfig" type="0"
+		des="设置tank是否自动补给">
+		<field name="tankid" type="int" />
+		<field name="bauto" type="int" des="0不补给 1自动补给" />
+	</packet>
+
+	<packet id="6013" name="CSTankBulletBakConfigRet" type="1"
+		des="设置tank是否自动补给">
+		<field name="ret" type="int" />
+		<field name="tankid" type="int" />
+		<field name="bauto" type="int" des="0不补给 1自动补给" />
+	</packet>
+
+
+	<packet id="6014" name="CSAddItem" type="0" des="请求添加道具">
+		<field name="itemid" type="int" des="物品id" />
+		<field name="additemcounts" type="int" des="请求购买多少数量" />
+		<field name="buytype" type="int" des="0银币购买 1金币购买" />
+	</packet>
+
+	<packet id="6015" name="SCAddItemRet" type="1" des="请求添加道具ret">
+		<field name="ret" type="int" />
+		<field name="itemid" type="int" />
+		<field name="allitemcounts" type="int" des="购买后剩余多少数量" />
+	</packet>
+
+
+	<packet id="6016" name="CSTankChangeItem" type="0" des="请求更换道具">
+		<field name="tankid" type="int" />
+		<field name="itemindex" type="int" des="0-2号位" />
+		<field name="itemid" type="int" des="物品id" />
+		<field name="itemcount" type="int" des="更换后的数量" />
+	</packet>
+
+	<packet id="6017" name="ScTankChangeItemRet" type="1" des="请求更换道具">
+		<field name="ret" type="int" />
+		<field name="tankid" type="int" />
+		<field name="itemindex" type="int" des="0-2号位" />
+		<field name="itemid" type="int" des="物品id" />
+		<field name="itemcount" type="int" des="更换后的数量" />
+	</packet>
+
+
+	<packet id="6018" name="CSTankItemAutoBak" type="0" des="是否自动补给道具">
+		<field name="tankid" type="int" />
+		<field name="bauto" type="int" des="0不自动补给 1自动补给" />
+	</packet>
+
+	<packet id="6019" name="SCTankItemAutoBakRet" type="1"
+		des="是否自动补给道具 ret">
+		<field name="tankid" type="int" />
+		<field name="bauto" type="int" des="0不自动补给 1自动补给" />
+		<field name="ret" type="int" />
+	</packet>
+
+	<packet id="6020" name="SCRet" type="0" des="是否自动补给道具">
+		<field name="tankid" type="int" />
+		<field name="bauto" type="int" des="0不自动补给 1自动补给" />
+	</packet>
+
+	<packet id="6021" name="CSChangeSkill" type="0" des="切换当前tank的主动技能">
+		<field name="tankid" type="int" />
+		<field name="skillpartid" type="int" des="当前想要切换的主动技能部件id " />
+	</packet>
+
+	<packet id="6022" name="SCChangeSkillRet" type="1"
+		des="切换当前tank的主动技能 ret">
+		<field name="tankid" type="int" />
+		<field name="skillpartid" type="int" des="当前想要切换的主动技能部件id " />
+		<field name="ret" type="int" />
+	</packet>
+
+	<packet id="6023" name="SCCoinChange" type="1" des="货币更新消息">
+		<field name="cointype" type="int"
+			des="0;//银币类型  1;//金币类型 2;//公共研发点类型 3;//公共科技点类型" />
+		<field name="value" type="int" des="最终值" />
+	</packet>
+
+	<packet id="6024" name="SCTankTechChange" type="1" des="坦克私有科技点变更">
+		<field name="tankid" type="int" />
+		<field name="value" type="int" des="最终值" />
+	</packet>
+
+	<packet id="6025" name="CSTechReset" type="0" des="重置所有天赋">
+	</packet>
+
+	<packet id="6026" name="SCTechResetRet" type="1" des="重置所有天赋ret">
+		<field name="ret" type="int" />
+	</packet>
+
+	<packet id="6027" name="SCTechRate" type="1" des="天赋兑换比率 svr->client">
+		<field name="techRate" type="int" />
+		<field name="GoldMoney" type="int" />
+	</packet>
+
+	<packet id="6028" name="CSRequestDevelopRate" type="0" des="请求天赋兑换">
+		<field name="tankid" type="int" />
+		<field name="value" type="int" des="兑换多少" />
+	</packet>
+
+	<packet id="6029" name="CSRequestDevelopRateRet" type="1"
+		des="请求天赋兑换 ret">
+		<field name="ret" type="int" />
+
+	</packet>
+
+	<packet id="6030" name="SCMaxUsedTank" type="1" des="常用tank info">
+		<field name="tankid" type="int[]" />
+		<field name="count" type="int[]" />
+	</packet>
+
+
+	<packet id="6033" name="SCTankFightLockInfo" type="1" des="坦克战斗解锁">
+		<field name="tankid" type="int" />
+		<field name="secs" type="int" des="锁多少秒" />
+	</packet>
+
+	<packet id="6034" name="CSRequestUpMemberstar" type="0" des="请求升级成员星级">
+		<field name="memberid" type="int" />
+	</packet>
+
+	<packet id="6035" name="SCRequestUpMemberstarRet" type="1"
+		des="请求升级成员星级ret">
+		<field name="ret" type="int" />
+		<field name="memberid" type="int" />
+		<field name="chips" type="int" des="剩余碎片数量" />
+		<field name="star" type="int" />
+		<field name="lvl" type="int" />
+	</packet>
+
+	<packet id="6036" name="SCRequestUpMemberLvlRet" type="1"
+		des="升级成员等级返回结果">
+		<field name="ret" type="int" />
+		<field name="memberid" type="int" />
+		<field name="exp" type="int" />
+		<field name="lvl" type="int" />
+	</packet>
+
+	<packet id="7000" name="CSGetZoneInfo" type="0" />
+	<packet id="7001" name="SCZoneInfo" type="1">
+		<field name="zones" type="refArray" refType="GameZoneInfo" />
+	</packet>
+
+	<packet id="7002" name="SCPlayerItems" type="1" des="玩家道具">
+		<field name="items" type="refArray" refType="PlayerItem" />
+	</packet>
+
+	<packet id="7003" name="CSUseItem" type="0" des="使用道具">
+		<field name="id" type="long" des="id" />
+		<field name="pos" type="short" des="槽位位置(从左到右8\9\1\2\3\4\5\6\7)" />
+	</packet>
+	<packet id="7004" name="SCUseItem" type="1" des="使用道具响应">
+		<field name="id" type="long" des="id" />
+		<field name="pos" type="short" des="槽位位置(从左到右8\9\1\2\3\4\5\6\7)" />
+		<field name="errcode" type="short" des="0:成功;" />
+		<field name="boxdata" type="refArray" refType="BoxData" />
+	</packet>
+
+	<packet id="7005" name="CSUnUseItem" type="0" des="卸载道具">
+		<field name="pos" type="short" des="id" />
+	</packet>
+	<packet id="7006" name="SCUnUseItem" type="1" des="卸载道具响应">
+		<field name="pos" type="short" des="id" />
+		<field name="errcode" type="short" des="0:成功;" />
+	</packet>
+
+	<packet id="7007" name="CSShortcut" type="0" des="快捷鍵">
+		<field name="shortcuts" type="refArray" refType="Shortcut" />
+	</packet>
+	<packet id="7008" name="SCShortcut" type="1" des="快捷鍵">
+		<field name="shortcuts" type="refArray" refType="Shortcut" />
+	</packet>
+
+	<packet id="7009" name="SCShopItem" type="1" des="商城道具">
+		<field name="shopitem" type="refArray" refType="ShopItem" />
+	</packet>
+
+	<packet id="7010" name="CSBuyShopItem" type="0" des="购买商城道具">
+		<field name="propid" type="int" />
+	</packet>
+	<packet id="7011" name="SCBuyShopItem" type="1" des="购买商城道具响应">
+		<field name="errcode" type="short" />
+		<field name="propid" type="int" />
+	</packet>
+
+	<packet id="7012" name="SCServerShutdown" type="1" des="通知在线玩家服务器即将重启">
+		<field name="time" type="int" des="单位：分钟" />
+	</packet>
+
+	<packet id="7013" name="SCBroadcast" type="1" des="广播">
+		<field name="content" type="String" />
+	</packet>
+	<packet id="7014" name="SCBroadcastCancel" type="1" des="取消广播">
+	</packet>
+
+	<packet id="7015" name="SCMail" type="1" des="Mail">
+		<field name="mails" type="refArray" refType="Mail" />
+	</packet>
+	<packet id="7016" name="CSMailRead" type="0" des="read mail">
+		<field name="mailids" type="long[]" />
+	</packet>
+	<packet id="7017" name="SCMailRead" type="1" des="read mail return">
+		<field name="errorcode" type="short" />
+		<field name="mailids" type="long[]" />
+	</packet>
+	<packet id="7018" name="CSMailGetItem" type="0" des="请求领取道具">
+		<field name="mailid" type="long" />
+	</packet>
+	<packet id="7019" name="SCMailGetItem" type="1" des="领取道具返回">
+		<field name="errorcode" type="short" />
+		<field name="mailid" type="long" />
+		<field name="propid" type="int[]" />
+		<field name="num" type="int[]" />
+	</packet>
+	
+	<packet id="7020" name="CSPlayerClientSetting" type="0" des="玩家客户端设置">
+		<field name="setting" type="short[]" des="[WindowMode, Resolution, VSync, Language, OverallQuality, ViewDistance, AntiAliasing, PostProcessing, Shadow, Texture, VisualEffect, Foliage, ResolutionScalability]"/>
+	</packet>
+	<packet id="7021" name="CSPlayerPCinfo" type="0" des="玩家PC信息">
+		<field name="cpu" type="String" />
+		<field name="gpu" type="String" />
+		<field name="mem" type="int" />
+		<field name="gmem" type="int" />
+	</packet>
+
+	<packet id="7022" name="CSSearchPlayer" type="0">
+		<field name="nickname" type="String" />
+	</packet>
+	<packet id="7023" name="SCSearchPlayer" type="1">
+		<field name="errorcode" type="short" />
+		<field name="nickname" type="String" />
+		<field name="playerid" type="long" />
+		<field name="isinvite" type="short" des="0：允許邀請，1：拒絕"/>
+		<field name="status" type="short" des="0:online, 1:offline, 2:gaming, 3:inteam"/>
+	</packet>
+
+	<packet id="7024" name="CSPlayerLobbyFromFight" type="0" des="战斗结束返回大厅">
+	</packet>
+
+	<packet id="7025" name="CSTeamInvite" type="0" des="邀请玩家">
+		<field name="playerid" type="long" des="被邀请玩家id" />
+	</packet>
+	<packet id="7026" name="SCTeamNotify" type="1" des="通知被邀请人">
+		<field name="retcode" type="short" des="0:邀請請求, TeamMax:房間已滿"/>
+		<field name="playerid" type="long" des="邀请玩家id" />
+		<field name="nickname" type="String" des="邀请玩家nickname" />
+	</packet>
+	<packet id="7027" name="CSTeamNotifyRet" type="0" des="被邀请人的响应">
+		<field name="playerid" type="long" des="邀请玩家id" />
+		<field name="retcode" type="short" des="0:同意, 1:拒绝"/>
+	</packet>
+	<packet id="7028" name="SCTeamPlayer" type="1" des="隊伍成員">
+		<field name="teamplayer" type="refArray" refType="TeamPlayer" />
+	</packet>
+
+	<packet id="7029" name="CSTeamLeave" type="0" des="离开队伍">
+	</packet>
+	<packet id="7030" name="SCTeamLeaveRet" type="1" des="离开队伍的响应">
+		<field name="retcode" type="short" />
+	</packet>
+	<packet id="7031" name="SCTeamPlayerLeave" type="1" des="有玩家离开队伍">
+		<field name="playerid" type="long" des="玩家id" />
+		<field name="nickname" type="String" des="玩家nickname" />
+	</packet>
+
+	<packet id="7032" name="CSSetIsInvite" type="0" des="設置是否允許邀請開關">
+		<field name="isinvite" type="short" des="0：允許邀請，1：拒絕"/>
+	</packet>
+
+
+
+
+
+	<!-- ######################################### -->
+	<!-- gameserver 与 fightserver之间的消息包 -->
+	<!-- ######################################### -->
+	<packet id="16000" name="UGlogin" type="0" des="地图服务器登录">
+		<field name="version" type="String" des="服务器版本号" />
+		<field name="map" type="String" des="地图名字" />
+		<field name="battletype" type="String" des="战斗类型" />
+		<field name="minplayer" type="short" des="开战最小人数" />
+		<field name="maxplayer" type="short" des="可进入的最大玩家数" />
+		<field name="hostname" type="String" des="机器名" />
+		<field name="ip" type="String" des="对玩家开放的ip" />
+		<field name="port" type="short" des="对玩家开放的端口" />
+		<field name="fightnumber" type="int" des="战斗类型编号" />
+		<field name="agentid" type="int" des="agent编号" />
+	</packet>
+	<packet id="16001" name="GULoginRet" type="1" des="登录结果">
+		<fieid name="ret" type="short" des='结果  0.成功' />
+		<fieid name="serverid" type="long" des='结果  0.成功' />
+	</packet>
+
+	<packet id="16002" name="UGState" type="0" des="改变状态">
+		<field name="state" type="short" des="1open 2close" />
+	</packet>
+	<packet id="16003" name="GUUserLogin" type="1" des="通知有玩家登陆">
+		<field name="roleinfo" type="ref" refType="RoleFightInfo" des="角色信息" />
+	</packet>
+	<packet id="16004" name="UGUserLoginRet" type="0" des="通知返回">
+		<field name="roleid" type="long" des="角色id" />
+		<field name="ret" type="short" des="处理结果" />
+	</packet>
+	<packet id="16005" name="UGUserAction" type="0" des="玩家状态">
+		<field name="roleid" type="long" des="角色id" />
+		<field name="action" type="short" des="玩家动作，1，进入，2，退出" />
+	</packet>
+
+	<packet id="16006" name="SCGameSvrStartFight" type="1"
+		des="gameserver 匹配完成告诉fightserver 准备战斗">
+		<field name="roleinfos" type="refArray" refType="RoleFightInfo"
+			des="玩家信息" />
+		<field name="roomid" type="long" des="房间号" />
+		<field name="matchtype" type="int" des="匹配类型" />
+		<field name="matchid" type="int" des="匹配id 结算时候使用" />
+	</packet>
+
+	<packet id="16007" name="CSGameSvrStartFightRet" type="0"
+		des="fightserver ->gamesvr 可以战斗">
+		<field name="ret" type="int" des="-1失败 0成功" />
+		<field name="roomid" type="long" des="房间号" />
+		<field name="matchtype" type="int" des="匹配类型" />
+
+	</packet>
+
+	<packet id="16008" name="SCSendFightToClient" type="1"
+		des="gameserver 发起战斗信息 到client">
+		<field name="ip" type="string" des="" />
+		<field name="port" type="short" des="" />
+	</packet>
+
+	<packet id="16009" name="SSSendFightOver" type="0"
+		des="fightsvr->gamesvr 战斗结束">
+		<field name="matchid" type="int" des="匹配id 结算时候使用" />
+		<field name="roomid" type="long" des="房间id" />
+		<field name="matchtype" type="int" des="匹配类型" />
+
+		<field name="alltimesecs" type="int" des="战斗所用秒数" />
+		<field name="rolesWin" type="refArray" refType="RoleFightOverInfo"
+			des="玩家信息" />
+		<field name="rolesFailed" type="refArray" refType="RoleFightOverInfo"
+			des="玩家信息" />
+	</packet>
+
+	<packet id="16010" name="CSRoleFighExit" type="0"
+		des="fightsvr->gamesvr 玩家战斗中途退出">
+
+		<field name="matchid" type="int" des="匹配id 结算时候使用" />
+		<field name="roomid" type="long" des="房间id" />
+		<field name="matchtype" type="int" des="匹配类型" />
+
+		<field name="alltimesecs" type="int" des="战斗所用秒数" />
+
+		<field name="rolefightinfo" type="ref" refType="RoleFightOverInfo" />
+		<filed name="bfightstart" type="int" des="战斗是否开始 做惩罚" />
+		<filed name="blockscs" type="int" des="中途退出tank锁住多长时间秒数" />
+		<filed name="fightsecs" type="int" des="战斗了多少秒"></filed>
+	</packet>
+
+	<packet id="16011" name="ScTankSpaceCount" type="1">
+		<field name="tankspacecount" type="int" des="tank车位数" />
+	</packet>
+
+	<packet id="16012" name="UGPlayerJoinFight" type="0" des="有玩家加入战斗">
+		<field name="playerid" type="long" des="玩家id" />
+	</packet>
+
+	<packet id="16013" name="UGPlayerDead" type="0" des="玩家死亡">
+		<field name="playerid" type="long" des="死亡玩家id" />
+		<field name="killed" type="int" des="击杀数" />
+		<field name="damage" type="int" des="伤害数" />
+		<field name="hurt" type="int" des="承受伤害数" />
+		<field name="time" type="int" des="时长" />
+		<field name="travel" type="int" des="米" />
+	</packet>
+
+	<!-- 吃鸡专用战斗消息 -->
+	<packet id="17001" name="SUStartFight" type="1" des="通知fightserver开始战斗">
+		<field name="tankinfos" type="refArray" refType="TankFightInfo"
+			des="玩家信息" />
+	</packet>
+
+	<packet id="17002" name="USStartFightRet" type="0"
+		des="fightserver ->gamesvr 可以战斗">
+		<field name="ret" type="short" des="-1失败 0成功" />
+		<field name="aicount" type="int" des="創建ai的數量" />
+	</packet>
+
+	<packet id="17003" name="UGPlayerLeave" type="0" des="玩家退出">
+		<field name="playerid" type="long" des="玩家id" />
+	</packet>
+
+
+	
+
+
+
+
+
+	<packet id="31000" name="ReportServiceInfo" type="2" des="汇报服务信息">
+		<field name="info" type="ref" refType="ServiceInfo" />
+	</packet>
+	<packet id="31001" name="ReportSystemInfo" type="2" des="汇报系统信息">
+		<field name="info" type="ref" refType="SystemInfo" />
+	</packet>
+	<packet id="31010" name="StartService" type="2" des="通知agent开启server">
+		<field name="fightid" type="int" des="战斗id" />
+	</packet>
+
+	<packet id="31011" name="Shutdown" type="2" des="关机命令">
+		<field name="time" type="int" des="分钟" />
+	</packet>
+
+	<packet id="31012" name="AgentLoginGameSvr" type="2"
+		des="agent连接到gamesvr登录操作">
+		<field name="time" type="int" des="时间戳" />
+		<field name="md5check" type="string"
+			des="md5效验 time+agent+wxft#$!$md5  的md5值" />
+		<field name="zoneid" type="int" des="该agent的编号" />
+		<field name="zonename" type="string" des="该agent的编号" />
+		<field name="freecount" type="int" des="该agent管理的空闲fightserver的数量" />
+	</packet>
+
+	<packet id="31013" name="AgentLoginGameSvrRet" type="2"
+		des="gamesvr 返回agent编号和是否登录成功">
+		<field name="ret" type="int" des="0成功 -1失败 参考errorcode" />
+		<field name="index" type="int" des="该agent的编号" />
+
+	</packet>
+
+	<packet id="31014" name="CGGetShopItem" type="2" des="获取商城道具">
+	</packet>
+	<packet id="31015" name="CGUpdShopItem" type="2" des="更新商城道具">
+		<field name="shopitem" type="refArray" refType="ShopItemList" />
+	</packet>
+	<packet id="31016" name="GCShopItemList" type="2" des="商城道具列表">
+		<field name="shopitem" type="refArray" refType="ShopItemList" />
+	</packet>
+	<packet id="31017" name="ServerType" type="2">
+		<field name="type" type="short" des="1:GameServer;" />
+	</packet>
+
+	<packet id="31018" name="CGAccountBlock" type="2" des="账号封停、解封">
+		<field name="ids" type="String" />
+		<field name="blocktime" type="int" />
+	</packet>
+
+	<packet id="31019" name="CGGetOnlinePlayerItem" type="2" des="请求在线玩家道具">
+		<field name="playerid" type="long" />
+	</packet>
+	<packet id="31020" name="GCOnlinePlayerItem" type="2">
+		<field name="items" type="refArray" refType="PlayerItem" />
+	</packet>
+
+	<packet id="31021" name="CGGetIPBlacklist" type="2"
+		des="centerserver請求ip黑名單" />
+	<packet id="31022" name="GCIPBlacklist" type="2">
+		<field name="ips" type="int[]" />
+	</packet>
+	<packet id="31023" name="CGUpdIPBlacklist" type="2">
+		<field name="oper" type="short" des="0:add;1:del" />
+		<field name="ips" type="int[]" />
+	</packet>
+
+	<packet id="31024" name="CGBroadcast" type="2" des="广播">
+		<field name="content" type="String" />
+	</packet>
+	<packet id="31025" name="CGBroadcastCancel" type="2" des="取消广播">
+	</packet>
+
+	<packet id="31026" name="CGMail" type="2" des="Mail">
+		<field name="nickname" type="String[]" />
+		<field name="mailtitle" type="String" />
+		<field name="mailcontent" type="String" />
+		<field name="propid" type="int[]" />
+		<field name="num" type="int[]" />
+	</packet>
+
+
+
+	<!-- ######################################### -->
+	<!-- ref objects -->
+	<!-- ######################################### -->
+
+	<ref name="FighterInfo">
+		<field name="id" type="int" />
+		<field name="battlelevelid" type="int" />
+		<field name="mapname" type="string" />
+		<field name="hostname" type="string" />
+	</ref>
+
+	<ref name="GameZoneInfo">
+		<field name="id" type="int" />
+		<field name="zonename" type="string" />
+	</ref>
+
+
+	<ref name="ItemInfo" des="物品信息">
+		<field name="itemid" type="int" des="itemid 1经验,2金钱,3天梯积分，4宝箱" />
+		<field name="count" type="int" des="count" />
+	</ref>
+
+	<ref name="ShopItemInfo" des="商品信息">
+		<field name="itemid" type="int" des="itemid" />
+		<field name="count" type="int" des="count" />
+		<field name="type" type="int" des="1：宝箱2：卡牌" />
+		<field name="money" type="int" des="id=1是金币；id=2是宝石" />
+		<field name="price" type="int" des="price" />
+	</ref>
+
+
+	<ref name="CardInfo" des="卡牌信息">
+		<field name="cardid" type="long" des="cardid" />
+		<field name="cardtype" type="int" des="cardtype" />
+		<field name="cardlevel" type="int" des="cardlelve" />
+		<field name="exp" type="int" des="經驗" />
+	</ref>
+
+	<ref name="Pos" des="位置信息">
+		<field name="x" type="int" des="x" />
+		<field name="y" type="int" des="y" />
+		<field name="z" type="int" des="z" />
+	</ref>
+
+	<ref name="Damage" des="伤害信息">
+		<field name="id" type="int" des="unitid" />
+		<field name="damage" type="int" des="damage" />
+		<field name="hp" type="int" des="剩余血量" />
+	</ref>
+
+	<ref name="Buff" des="buff信息">
+		<field name="id" type="int" des="unitid" />
+		<field name="buffid" type="int" des="buffid" />
+		<field name="time" type="int" des="持续时间" />
+	</ref>
+
+	<ref name="RankInfo" des="排行榜信息">
+		<field name="index" type="int" />
+		<field name="name" type="string" />
+		<field name="value" type="int" />
+	</ref>
+
+	<ref name="FinishLevelinfo" des="finishlvl info">
+		<field name="id" type="int" />
+		<field name="star" type="int" />
+	</ref>
+
+	<ref name="TankMemberInfo" des="tank成员信息">
+		<field name="id" type="int" />
+		<field name="lvl" type="int" />
+		<field name="exp" type="int" />
+		<field name="star" type="int" />
+		<field name="state" type="int" />
+		<field name="chips" type="int" />
+	</ref>
+
+	<ref name="TankModelinfo" des="tankmodel info">
+		<field name="modelid" type="int" />
+		<field name="masterlvl" type="int" />
+		<field name="barrelid" type="int" />
+		<field name="turretid" type="int" />
+		<field name="engineid" type="int" />
+		<field name="transmissionid" type="int" />
+		<field name="diypartids" type="int[]" des="diy自定义部件" />
+		<field name="bodyid" type="int" />
+		<field name="bsale" type="int" />
+		<field name="state" type="int" />
+		<field name="bulletids" type="int[]" />
+		<field name="bulletcounts" type="int[]" />
+		<field name="bulletidsbak" type="int[]" />
+		<field name="bulletcountsbak" type="int[]" />
+
+		<field name="itemids" type="int[]" />
+		<field name="itemcounts" type="int[]" />
+		<field name="itemidsbak" type="int[]" />
+		<field name="itemcountsbak" type="int[]" />
+
+
+		<field name="autobak" type="int" />
+		<field name="itemautobak" type="int" />
+		<field name="skillpartid" type="int" des="当前使用的主动技能" />
+		<field name="tankmembers" type="int[]" des="当前使用的tank成员id" />
+
+		<field name="fightlock" type="int" des="是否锁住" />
+		<field name="startlocktime" type="int" des="锁住开始时间" />
+		<field name="locksecs" type="int" des="锁住多少秒" />
+	</ref>
+
+	<ref name="TankPartInfo" des="tank对应的部件信息">
+		<field name="tankid" type="int" />
+		<field name="partid" type="int" />
+		<field name="state" type="int" />
+	</ref>
+
+	<ref name="TechnologyInfo" des="tankmodel info">
+		<field name="techId" type="int" />
+		<field name="techLvl" type="int" />
+	</ref>
+
+
+	<ref name="RequestLoginSvrInfo" des="request login svr info">
+		<field name="zoneid" type="int" des="区号" />
+		<field name="ip" type="string" des="ip" />
+		<field name="port" type="int" des="port" />
+		<field name="svrname" type="string" des="服务器名" />
+	</ref>
+
+	<ref name="TankSpaceInfo" des="车位信息">
+		<field name="spaceid" type="int" des="车位id" />
+		<field name="tankmodelid" type="int" des="当前使用的tank模型" />
+	</ref>
+
+	<ref name="DriverInfo" des="乘员信息">
+		<field name="id" type="int" des="乘员id" />
+		<field name="level" type="int" des="乘员等级" />
+		<field name="star" type="int" des="乘员星级" />
+		<field name="state" type="int" />
+		<field name="chips" type="int" des="碎片个数" />
+	</ref>
+
+	<ref name="TankFightInfo" des="战斗信息,吃鸡用">
+		<field name="roleid" type="long" des="id" />
+		<field name="rolename" type="string" des="角色名字" />
+		<field name="token" type="String" des="登录密钥" />
+		<field name="tankid" type="int" des="当前选择的坦克" />
+		<field name="decalid" type="int[]" des="贴画" />
+		<field name="teamid" type="int" des="组id" />
+	</ref>
+
+
+	<ref name="RoleFightInfo" des="战斗信息">
+		<field name="roleid" type="long" des="id" />
+		<field name="camp" type="int" des="阵营" />
+
+		<field name="rolename" type="string" des="角色名字" />
+		<field name="token" type="String" des="登录密钥" />
+		<field name="tankid" type="int" des="当前选择的坦克" />
+		<field name="decalid" type="int[]" des="贴画" />
+		<field name="tankfireid" type="int" des="当前选择的坦克" />
+		<field name="tankturedid" type="int" des="当前选择的坦克" />
+		<field name="tankarmouredid" type="int" des="当前选择的坦克" />
+		<field name="tankmoveid" type="int" des="当前选择的坦克" />
+		<field name="tankcarid" type="int" des="当前选择的坦克" />
+		<field name="techs" type="refArray" refType="TechnologyInfo" />
+		<field name="bulletids" type="int[]" des="当前tank装备的子弹id" />
+		<field name="bulletcounts" type="int[]" des="当前tank装备的子弹数量 与子弹id一一对应" />
+
+		<field name="itemids" type="int[]" des="当前tank装备物品id" />
+		<field name="itemcounts" type="int[]" des="当前tank装备物品i数量 与物品id一一对应" />
+
+		<field name="skillpartid" type="int" des="当前tank使用的技能部件id" />
+		<field name="diys" type="int[]" des="当前使用的DIY部件id" />
+		<field name="drivers" type="refArray" refType="DriverInfo" des="乘员信息" />
+	</ref>
+
+
+	<ref name="RoleFightOverInfo" des="战斗结束信息">
+		<field name="roleid" type="long" des="玩家id" />
+		<field name="usetankid" type="int" des="使用的tank" />
+		<field name="killcount" type="int" des="击杀数" />
+		<field name="assistcount" type="int" des="助攻数" />
+		<field name="deadcount" type="int" des="死亡数" />
+		<field name="score" type="int" des="积分" />
+		<field name="camp" type="int" des="阵营" />
+		<field name="bulletids" type="int[]" des="当前tank使用后的子弹id" />
+		<field name="bulletcounts" type="int[]" des="当前tank使用后的子弹数量" />
+		<field name="itemids" type="int[]" des="当前tank使用后物品id" />
+		<field name="itemcounts" type="int[]" des="当前tank使用后物品i数量 与物品id一一对应" />
+		<field name="fightsecs" type="int" des="战斗了多少秒"></field>
+	</ref>
+
+
+
+	<ref name="RoleFightResult" des="战斗结算信息">
+		<field name="roleid" type="long" des="roleid" />
+		<field name="mapid" type="int" des="roleid" />
+		<field name="rolename" type="string" des="rolename" />
+		<field name="gamescs" type="int" des="战斗秒数" />
+		<field name="addexp" type="int" des="经验" />
+		<field name="addmoney" type="int" des="银币" />
+		<field name="addtechpoint" type="int" des="私有研发点" />
+		<field name="usetankid" type="int" des="使用的tank" />
+		<field name="killcount" type="int" des="击杀数" />
+		<field name="assistcount" type="int" des="助攻数" />
+		<field name="deadcount" type="int" des="死亡数" />
+		<field name="addscore" type="int" des="积分" />
+		<field name="camp" type="int" des="阵营" />
+	</ref>
+
+	<ref name="FightLoadingRef" des="战斗加载信息">
+		<field name="roleid" type="long" />
+		<field name="camp" type="int" />
+		<field name="rolelvl" type="int" />
+		<field name="rolename" type="String" />
+		<field name="tankid" type="int" />
+		<field name="tanklvl" type="int" />
+	</ref>
+
+
+	<ref name="ServiceInfo" des="服务运行状态">
+		<field name="processname" type="String" />
+		<field name="serverid" type="int" />
+		<field name="zoneid" type="int" />
+		<field name="version" type="String" />
+		<field name="processid" type="long" />
+		<field name="starttime" type="String" />
+		<field name="mem" type="String" />
+		<field name="cpu" type="String" />
+		<field name="clientcount" type="int" />
+		<field name="servercount" type="int" />
+		<field name="ip" type="String" />
+		<field name="sampleTime" type="int" />
+	</ref>
+
+	<ref name="SystemInfo" des="系统信息,用于agent向center汇报机器信息">
+		<field name="network" type="String" />
+		<field name="os" type="String" />
+		<field name="cpucount" type="int" des="cpu数量" />
+		<field name="syscpuidle" type="int" des="系统cpu空闲" />
+		<field name="sysmem" type="long" des="系统空闲内存" />
+		<field name="sysmemfree" type="long" des="系统空闲内存" />
+		<field name="ip" type="String" />
+		<field name="sampleTime" type="int" />
+	</ref>
+
+	<ref name="FightRankInfo" des="战斗排名信息">
+		<field name="rank" type="int" des="排名" />
+		<field name="killed" type="int" des="击杀数" />
+		<field name="damage" type="int" des="伤害数" />
+		<field name="rankreward" type="int" des="排名奖励" />
+		<field name="killedreward" type="int" des="击杀奖励" />
+		<field name="damagereward" type="int" des="伤害奖励" />
+	</ref>
+
+	<ref name="PlayerRankInfo" des="玩家排行">
+		<field name="playerid" type="long" des="玩家id" />
+		<field name="nickname" type="String" des="昵称" />
+		<field name="wins" type="int" des="" />
+		<field name="winratio" type="int" des="" />
+	</ref>
+
+	<ref name="PlayerFightData" des="玩家战斗数据">
+		<field name="playrounds" type="int" des="游戏总局数" />
+		<field name="playtime" type="int" des="游戏总时长" />
+		<field name="travel" type="int" des="游戏总行驶（米）" />
+		<field name="avgtravel" type="int" des="平均每局游戏行驶（米）" />
+		<field name="winrounds" type="int" des="获得第一名的次数" />
+		<field name="top5rounds" type="int" des="获得前5名的总次数" />
+		<field name="winratio" type="int" des="获得第一名的概率（吃鸡数/总局数）" />
+		<field name="top5ratio" type="int" des="获得前5名的概率（前5数/总局数）" />
+		<field name="destorys" type="int" des="击杀总数" />
+		<field name="totaldamage" type="int" des="造成的总伤害" />
+		<field name="avgdamage" type="int" des="平均伤害（总伤害/局数）" />
+		<field name="kdratio" type="int" des="击杀/死亡比" />
+		<field name="totalhurt" type="int" des="承受的总伤害" />
+		<field name="avghurt" type="int" des="平均每局的承受伤害" />
+	</ref>
+
+	<ref name="PlayerItem" des="玩家道具">
+		<field name="id" type="long" des="id" />
+		<field name="propid" type="int" des="道具id" />
+		<field name="deadline" type="int" des="过期时间" />
+		<field name="pos" type="short" des="槽位位置(从左到右1\2\3\4\5\6\7); 0是背包中的道具" />
+	</ref>
+	<ref name="BoxData" des="箱子内容预览">
+		<field name="propid" type="int" des="道具id" />
+		<field name="count" type="int" des="数量" />
+	</ref>
+
+	<ref name="KeyboardData" des="按键信息">
+		<field name="propid" type="int" des="道具id" />
+		<field name="count" type="int" des="数量" />
+	</ref>
+
+	<ref name="Shortcut" des="快捷鍵">
+		<field name="keytype" type="String" />
+		<field name="value" type="String" />
+	</ref>
+
+	<ref name="ShopItem" des="商城道具列表">
+		<field name="propid" type="int" />
+		<field name="price" type="int" />
+		<field name="type" type="short" />
+	</ref>
+	<ref name="ShopItemList" des="商城道具列表">
+		<field name="propid" type="int" />
+		<field name="price" type="int" />
+		<field name="type" type="short" />
+		<field name="onsale" type="short" />
+	</ref>
+
+	<ref name="Mail" des="Mail">
+		<field name="mailid" type="long" />
+		<field name="mailtitle" type="String" />
+		<field name="mailcontent" type="String" />
+		<field name="createtime" type="int" />
+		<field name="isread" type="short" des="0:未读;1:已读" />
+		<field name="isget" type="short" des="0:未领取;1:已领取;2:过期" />
+		<field name="propid" type="int[]" des="道具id"/>
+		<field name="num" type="int[]" des="道具数量"/>
+	</ref>
+	
+	<ref name="TeamPlayer" des="隊伍成員信息">
+		<field name="status" type="short" des="0:online, 1:offline, 2:gaming, 3:in team" />
+		<field name="matchstatus" type="short" des="0:nomatch;1:match" />
+		<field name="playerid" type="long" des="玩家id" />
+		<field name="nickname" type="String" des="玩家nickname" />
+		<field name="curdecalid" type="int[]" des="当前使用的decal" />
+	</ref>
+</packets>

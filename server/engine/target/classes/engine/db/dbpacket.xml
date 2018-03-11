@@ -1,0 +1,116 @@
+
+<!-- reserved field names:_length,code,buf -->
+<!-- client to server packet: type 0 -->
+<!-- server to client packet: type 1 -->
+<!-- ref means value type,not packet(no id) -->
+<!-- id start from 500 -->
+<!-- type : 0 client,1 server,-1 only c# code -->
+
+<packets package="packets">
+	<!-- ######################################### -->
+	<!-- DBServer packets -->
+	<!-- ######################################### -->
+	<!-- DB的客户端 type=3 -->
+	<!-- DB的服务器端 type=4 -->
+	<packet id="10000" name="DBCheck" type="4" des="db连接验证包">
+	</packet>
+	<packet id="10009" name="DBError" type="4">
+		<field name="errorCode" type="short" />
+		<field name="desc" type="string" />
+	</packet>
+
+	<packet id="10001" name="CDBSelectDB" type="3">
+		<field name="dbname" type="string" />
+	</packet>
+
+	<packet id="10002" name="CDBSaveDirect" type="3">
+		<field name="className" type="string" />
+		<field name="msg" type="directByte[]" />
+	</packet>
+
+	<packet id="10003" name="CDBUpdate" type="3">
+		<field name="className" type="string" />
+		<field name="data" type="directByte[]" />
+	</packet>
+	<packet id="10004" name="CDBClear" type="3">
+		<field name="className" type="string" />
+	</packet>
+
+
+	<packet id="11010" name="CDBGetObject" type="3">
+		<field name="className" type="string" />
+		<field name="key" type="long" />
+	</packet>
+	<packet id="12010" name="DBGetObject" type="4">
+		<field name="msg" type="directByte[]" />
+	</packet>
+
+
+
+	<packet id="11020" name="CDBGetObjects" type="3">
+		<field name="className" type="string" />
+		<field name="field" type="string" />
+		<field name="fvalue" type="string" />
+	</packet>
+	<packet id="11021" name="CDBGetConditions" type="3">
+		<field name="conditionData" type="byte[]" />
+	</packet>
+	<packet id="11022" name="CDBGetbyhql" type="3">
+		<field name="msg" type="byte[]" />
+	</packet>
+	<packet id="12020" name="DBGetObjects" type="4">
+		<field name="msg" type="directByte[]" />
+	</packet>
+
+	<packet id="11030" name="CDBSaveObjects" type="3">
+		<field name="msg" type="directByte[]" />
+	</packet>
+	<packet id="12030" name="DBSaveObjects" type="4">
+		<field name="ids" type="long[]" />
+	</packet>
+	<packet id="11040" name="CDBGetAll" type="3">
+		<field name="className" type="string" />
+		<field name="start" type="int" />
+		<field name="length" type="short" />
+	</packet>
+	<packet id="12040" name="DBGetAll" type="4">
+		<field name="msg" type="directByte[]" />
+	</packet>
+	<packet id="11050" name="CDBGetFieldValues" type="3">
+		<field name="className" type="string" />
+		<field name="propertyName" type="String[]" />
+		<field name="propertyType" type="byte[]" />
+	</packet>
+
+	<packet id="12050" name="DBGetFieldValues" type="4">
+		<field name="msg" type="directByte[]" />
+	</packet>
+	<packet id="11060" name="CDBGetLastID" type="3">
+		<field name="className" type="string" />
+	</packet>
+	<packet id="12060" name="DBLastId" type="4">
+		<field name="id" type="long" />
+	</packet>
+
+	<packet id="11070" name="CDBDeleteObject" type="3" des="根据id来删除对象">
+		<field name="className" type="string" />
+		<field name="ids" type="long[]" />
+	</packet>
+	<packet id="11071" name="CDBDeleteObjs" type="3" des="根据其他条件来删除对象">
+		<field name="className" type="string" />
+		<field name="field" type="string" />
+		<field name="fvalue" type="string" />
+	</packet>
+	<packet id="12070" name="DBDelObjects" type="4">
+		<field name="state" type="byte" />
+	</packet>
+
+
+
+
+
+
+
+
+
+</packets>

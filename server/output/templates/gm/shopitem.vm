@@ -1,0 +1,207 @@
+
+
+<h3>Shop Item</h3>
+
+
+<form id="form1" name="form1" method="post" action="/gmtool/shopitem">
+	<fieldset>
+		<legend>查询条件</legend>
+		<table>
+		<tr>
+		<td style="width:50%; text-align:left">
+			propid:
+				<input type="number" name="propid" value="$!propid" placeholder="精确查找" style="width:150px;">
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			type:
+			<select id="selecttype" name="type" value="$type" style="width:100px;">
+				<option value="">----请选择----</option>
+				<option value="0">Normal</option>
+				<option value="1">New</option>
+				<option value="2">Hot</option>
+			</select>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			onsale:
+			<select id="selectonsale" name="onsale" value="$onsale" style="width:100px;">
+				<option value="">----请选择----</option>
+				<option value="0">On</option>
+				<option value="1">Off</option>
+			</select>
+
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="submit" name="submit" id="submit" value="    查询    ">
+		</td>
+		</tr>
+		</table>
+	</fieldset>
+</form>
+
+
+	<fieldset>
+		<legend>查询结果</legend>
+		<a href="javascript:;" onclick="on()">上架</a>&nbsp;&nbsp;&nbsp;&nbsp; 
+		<a href="javascript:;" onclick="off()">下架</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="javascript:;" onclick="del()">删除</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="javascript:;" onclick="add()">添加</a>
+		<table border="0">
+			<tbody>
+				<tr>
+					<th scope="col" align="left" width="100px"><input type="checkbox" name="allcheck" id="allcheck" onclick="allcheck()"></th>
+					<th scope="col" align="left" width="250px">propid</th>
+					<th scope="col" align="left" width="250px">price</th>
+					<th scope="col" align="left" width="250px">type</th>
+					<th scope="col" align="left" width="250px">onsale</th>
+					<th scope="col" align="left" width="300px">修改</th>
+				</tr>
+				#foreach($a in $all)
+				<tr>
+					<td><input type="checkbox" name="chkid" value="$a.propid"></td>
+					<td>$a.propid</td>
+					<td>$a.price</td>
+					<td>
+						#if($a.type==0)
+							Normal
+						#elseif($a.type==1)
+							New
+						#elseif($a.type==2)
+							Hot
+						#end
+					</td>
+					<td>
+						#if($a.onsale==0)
+							On
+						#elseif($a.onsale==1)
+							Off
+						#end
+					</td>
+					<td><a href="javascript:;" onclick="upd('$a.propid', '$a.price', '$a.type', '$a.onsale')">$a.name</a></td>
+				</tr>
+				#end
+			</tbody>
+		</table>
+	</fieldset>
+
+
+#if($all.size()>0)
+#parse("templates/paging.vm")
+#end
+
+
+<p>
+<font color="red">注意啦，这里的操作，可以直接推送给在线玩家</font>
+<p>
+
+
+
+<!--_footer 作为公共模版分离出去-->
+<script type="text/javascript" src="$fileserver/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="$fileserver/lib/layer/2.4/layer.js"></script>
+<script type="text/javascript" src="$fileserver/static/h-ui/js/H-ui.min.js"></script> 
+<script type="text/javascript" src="$fileserver/static/h-ui.admin/js/H-ui.admin.js"></script> <!--/_footer 作为公共模版分离出去-->
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="$fileserver/lib/datatables/1.10.0/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+
+var  v = document.getElementById('selecttype');
+if(''=='$!type')
+	v[0].selected = true;
+if('0'=='$!type')
+	v[1].selected = true;
+if('1'=='$!type')
+	v[2].selected = true;
+if('2'=='$!type')
+	v[3].selected = true;
+
+var  onsale = document.getElementById('selectonsale');
+if(''=='$!onsale')
+	onsale[0].selected = true;
+if('0'=='$!onsale')
+	onsale[1].selected = true;
+if('1'=='$!onsale')
+	onsale[2].selected = true;
+
+
+
+
+
+function off(){
+	var ids=getids();
+	if(ids==""){
+		alert("请先选择道具！");
+	}else{
+		if(confirm('确认要下架吗？')){
+			window.location.href='/gmtool/shopitemonsale?on=1&ids='+ids;	
+		}else{
+		}
+	}
+}
+
+function on(){
+	var ids=getids();
+	if(ids==""){
+		alert("请先选择道具！");
+	}else{
+		if(confirm('确认要上架吗？')){
+			window.location.href='/gmtool/shopitemonsale?on=0&ids='+ids;	
+		}else{
+		}
+	}
+}
+
+function del(){
+	var ids=getids();
+	if(ids==""){
+		alert("请先选择道具！");
+	}else{
+		if(confirm('确认要删除吗？')){
+			window.location.href='/gmtool/shopitemdel?ids='+ids;	
+		}else{
+		}
+	}
+}
+
+
+
+
+
+function add(){
+	layer_show('Add ShopItem','/gmtool/shopitemadd','700','700');
+}
+
+
+function upd(propid, price, type, onsale){
+	layer_show('Update ShopItem','/gmtool/shopitemupd?propid='+propid+'&price='+price+'&type='+type+'&onsale='+onsale,'700','700');
+}
+
+
+
+
+function allcheck(){
+	var chkid=document.getElementsByName("chkid");
+	if(document.getElementById("allcheck").checked==true){
+		for(var i=0;i<chkid.length;i++){
+			chkid[i].checked=true;
+		}
+	}else{
+		for(var i=0;i<chkid.length;i++){
+			chkid[i].checked=false;
+		}
+	}
+}
+
+function getids(){
+	var ids="";
+	var chkid = document.getElementsByName("chkid");
+	for(var i=0;i<chkid.length;i++){
+		if(chkid[i].checked){
+			ids+=chkid[i].value;
+			ids+=",";
+		}
+	}
+	if(ids!=""){
+		ids=ids.substring(0, ids.length-1);
+	}
+	return ids;
+}
+
+</script>

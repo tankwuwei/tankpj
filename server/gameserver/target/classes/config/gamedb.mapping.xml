@@ -1,0 +1,27 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<mapping class="dbobjects.gamedb.AccountData" />
+		<mapping class="dbobjects.gamedb.IDSeed" />
+		<mapping class="dbobjects.gamedb.PlayerData" />
+		<mapping class="dbobjects.gamedb.TankModelTable" />
+		<mapping class="dbobjects.gamedb.PlayerFightStatiticTable" />
+		<mapping class="dbobjects.gamedb.RankWinRoundsTable" />
+		<mapping class="dbobjects.gamedb.RankTop5RoundsTable" />
+		<mapping class="dbobjects.gamedb.RankDestorysTable" />
+		<mapping class="dbobjects.gamedb.RankLevelTable" />
+		<mapping class="dbobjects.gamedb.UnDistributeRewardTable" />
+		<mapping class="dbobjects.gamedb.ItemTable" />
+		<mapping class="dbobjects.gamedb.ShortcutTable" />
+		<mapping class="dbobjects.gamedb.NickNameTable" />
+		<mapping class="dbobjects.gamedb.ShopItemTable" />
+		<mapping class="dbobjects.gamedb.BlacklistTable" />
+		<mapping class="dbobjects.gamedb.BroadcastTable" />
+		<mapping class="dbobjects.gamedb.MailPlayerTable" />
+		<mapping class="dbobjects.gamedb.PlayerClientSetting" />
+		<mapping class="dbobjects.gamedb.TeamTable" />
+	</session-factory>
+</hibernate-configuration>
